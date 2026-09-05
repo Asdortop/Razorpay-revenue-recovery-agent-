@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Razorpay Revive — Checkout Demo</title>
+  <meta name="description" content="Razorpay Standard Checkout integration with live recovery tracking" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --surface2:  #21262d;
+      --border:    #30363d;
+      --accent:    #00c9a7;
+      --accent2:   #0070f3;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --success:   #3fb950;
+      --error:     #f85149;
+      --warning:   #d29922;
+      --radius:    16px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 48px;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(0,201,167,.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,112,243,.05) 0%, transparent 60%);
+    }
+
+    /* ── Header ────────────────────────────────────────── */
+    .header { text-align: center; margin-bottom: 32px; }
+    .logo { display:inline-flex; align-items:center; gap:10px; margin-bottom:6px; }
+    .logo-icon {
+      width:40px; height:40px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius:10px; display:flex; align-items:center; justify-content:center;
+      font-size:20px;
+    }
+    .logo-text { font-size:22px; font-weight:700; letter-spacing:-0.5px; }
+    .logo-text span { color:var(--accent); }
+    .header-sub { color:var(--muted); font-size:13px; }
+
+    /* ── Live Recovery Banner ───────────────────────────── */
+    .recovery-banner {
+      width:100%; max-width:680px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius:var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .stat-block {
+      flex: 1;
+      padding: 8px 20px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .stat-block:last-child { border-right: none; }
+    .stat-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .stat-value {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      transition: color 0.4s;
+    }
+    .stat-value.updated { color: var(--accent) !important; }
+    .stat-value.rate { color: var(--accent); }
+
+    .live-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: var(--success);
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: pulse 1.8s ease-in-out infinite;
+      vertical-align: middle;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .banner-footer {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    #last-payment-badge {
+      display: none;
+      background: rgba(63,185,80,0.12);
+      border: 1px solid rgba(63,185,80,0.3);
+      color: var(--success);
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    /* ── Two-column layout ──────────────────────────────── */
+    .main-row {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      max-width: 680px;
+      align-items: flex-start;
+    }
+
+    /* ── Checkout Card ──────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,.5);
+      flex: 1;
+    }
+
+    .card-top {
+      padding: 22px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg,rgba(0,201,167,.04) 0%,transparent 100%);
+    }
+    .card-label { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--muted); margin-bottom:4px; }
+    .card-title { font-size:17px; font-weight:600; margin-bottom:2px; }
+    .card-desc  { font-size:12px; color:var(--muted); }
+
+    .card-body { padding: 20px 24px; }
+
+    .amount-row {
+      display:flex; align-items:center;
+      background:var(--surface2); border:1px solid var(--border);
+      border-radius:10px; overflow:hidden; margin-bottom:16px;
+      transition: border-color .2s;
+    }
+    .amount-row:focus-within { border-color:var(--accent); }
+    .currency-badge {
+      padding:0 14px; font-size:18px; font-weight:600;
+      color:var(--accent); border-right:1px solid var(--border);
+      height:52px; display:flex; align-items:center;
+      background:rgba(0,201,167,.06);
+    }
+    #amount-input {
+      flex:1; background:transparent; border:none; outline:none;
+      padding:0 14px; font-size:20px; font-weight:600;
+      color:var(--text); font-family:inherit; height:52px;
+    }
+    #amount-input::placeholder { color:var(--muted); font-weight:400; font-size:14px; }
+
+    .field { margin-bottom:14px; }
+    .field label { display:block; font-size:11px; color:var(--muted); margin-bottom:5px; font-weight:500; }
+    .field input {
+      width:100%; background:var(--surface2); border:1px solid var(--border);
+      border-radius:8px; padding:9px 12px; color:var(--text);
+      font-family:inherit; font-size:13px; outline:none; transition:border-color .2s;
+    }
+    .field input:focus { border-color:var(--accent); }
+    .field input::placeholder { color:var(--muted); }
+
+    #pay-btn {
+      width:100%; height:48px;
+      background: linear-gradient(135deg, var(--accent) 0%, #00a88d 100%);
+      border:none; border-radius:10px; color:#000;
+      font-size:15px; font-weight:700; font-family:inherit; cursor:pointer;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      transition: transform .15s, box-shadow .15s, opacity .15s;
+      margin-top:4px; letter-spacing:.3px;
+    }
+    #pay-btn:hover { transform:translateY(-1px); box-shadow:0 6px 24px rgba(0,201,167,.3); }
+    #pay-btn:active { transform:translateY(0); }
+    #pay-btn:disabled { opacity:.5; cursor:not-allowed; transform:none; box-shadow:none; }
+
+    .btn-spinner {
+      display:none; width:16px; height:16px;
+      border:2px solid rgba(0,0,0,.3); border-top-color:#000;
+      border-radius:50%; animation:spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    #status-box {
+      display:none; margin-top:16px; padding:12px 14px;
+      border-radius:10px; font-size:12px; line-height:1.5; border:1px solid transparent;
+    }
+    #status-box.success { background:rgba(63,185,80,.08); border-color:rgba(63,185,80,.3); color:var(--success); }
+    #status-box.error   { background:rgba(248,81,73,.08);  border-color:rgba(248,81,73,.3);  color:var(--error); }
+    #status-box.warning { background:rgba(210,153,34,.08); border-color:rgba(210,153,34,.3); color:var(--warning); }
+    .status-title  { font-weight:600; margin-bottom:3px; font-size:13px; }
+    .status-detail { font-family:'Courier New',monospace; font-size:10px; opacity:.8; word-break:break-all; }
+
+    .card-footer {
+      padding:14px 24px; border-top:1px solid var(--border);
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .badge { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:500; padding:3px 7px; border-radius:6px; }
+    .badge-test   { background:rgba(210,153,34,.15); color:var(--warning); }
+    .badge-secure { background:rgba(63,185,80,.10);  color:var(--success); }
+    .powered { font-size:10px; color:var(--muted); }
+
+    /* ── Test Cards Panel ───────────────────────────────── */
+    .test-panel {
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    .test-panel summary {
+      cursor:pointer; font-size:11px; font-weight:600; color:var(--muted);
+      user-select:none; padding:10px 12px;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:8px; list-style:none;
+      display:flex; align-items:center; gap:6px; letter-spacing:.3px;
+    }
+    .test-panel summary::-webkit-details-marker { display:none; }
+    .test-panel[open] summary { border-radius:8px 8px 0 0; border-bottom:none; }
+
+    .test-cards-body {
+      background:var(--surface); border:1px solid var(--border);
+      border-top:none; border-radius:0 0 8px 8px; padding:10px;
+    }
+    .tc-label { font-size:9px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); padding:6px 4px 3px; }
+    .tc-row {
+      display:flex; flex-direction:column;
+      padding:6px 4px; border-bottom:1px solid var(--border); gap:2px;
+    }
+    .tc-row:last-child { border-bottom:none; }
+    .tc-num  { font-family:monospace; font-size:11px; color:var(--text); letter-spacing:.5px; }
+    .tc-desc { font-size:10px; color:var(--muted); }
+    .tc-result { font-size:9px; font-weight:600; margin-top:2px; }
+    .tc-ok   { color:var(--success); }
+    .tc-fail { color:var(--error); }
+
+    /* ── Recent Payments Feed ───────────────────────────── */
+    .recent-feed {
+      width:100%; max-width:680px; margin-top:20px;
+    }
+    .feed-title { font-size:11px; text-transform:uppercase; letter-spacing:1.2px; color:var(--muted); margin-bottom:10px; }
+    #payments-list { display:flex; flex-direction:column; gap:8px; }
+    .payment-item {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:10px; padding:12px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      animation: slideIn .3s ease;
+    }
+    @keyframes slideIn {
+      from { opacity:0; transform:translateY(-8px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .pi-left { display:flex; flex-direction:column; gap:2px; }
+    .pi-id   { font-family:monospace; font-size:11px; color:var(--muted); }
+    .pi-event { font-size:12px; font-weight:500; color:var(--text); }
+    .pi-right { text-align:right; }
+    .pi-amount { font-size:16px; font-weight:700; color:var(--success); }
+    .pi-time   { font-size:10px; color:var(--muted); }
+    .empty-feed { font-size:12px; color:var(--muted); text-align:center; padding:20px; border:1px dashed var(--border); border-radius:10px; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">Razorpay <span>Revive</span></div>
+    </div>
+    <p class="header-sub">AI Revenue Recovery — Live Dashboard</p>
+  </div>
+
+  <!-- Live Recovery Banner -->
+  <div class="recovery-banner">
+    <div class="stat-block">
+      <div class="stat-label"><span class="live-dot"></span>Recovered</div>
+      <div class="stat-value" id="stat-amount">Rs.0.00</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label">Payments</div>
+      <div class="stat-value" id="stat-count">0</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label">Recovery Rate</div>
+      <div class="stat-value rate" id="stat-rate">0.0%</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label">At Risk</div>
+      <div class="stat-value" style="font-size:16px;color:var(--muted);" id="stat-risk">Rs.1,91,350</div>
+    </div>
+    <div style="width:100%;">
+      <div class="banner-footer">
+        <span id="last-updated-text">Waiting for first payment...</span>
+        <span id="last-payment-badge"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main row: checkout card + test cards -->
+  <div class="main-row">
+
+    <!-- Checkout Card -->
+    <div class="card">
+      <div class="card-top">
+        <div class="card-label">Test Payment</div>
+        <div class="card-title">Make a Recovery Payment</div>
+        <div class="card-desc">Each payment you complete is tracked live above</div>
+      </div>
+
+      <div class="card-body">
+        <div class="amount-row">
+          <div class="currency-badge">Rs.</div>
+          <input type="number" id="amount-input" placeholder="Enter amount" min="1" step="1" value="500" />
+        </div>
+
+        <div class="field">
+          <label for="name-input">Full Name</label>
+          <input type="text" id="name-input" placeholder="Rahul Sharma" value="Test User" />
+        </div>
+
+        <div class="field">
+          <label for="contact-input">Phone</label>
+          <input type="tel" id="contact-input" placeholder="9876543210" value="9999999999" maxlength="10" />
+        </div>
+
+        <button id="pay-btn" onclick="initiatePayment()">
+          <div class="btn-spinner" id="btn-spinner"></div>
+          <span id="btn-text">Pay Now</span>
+        </button>
+
+        <div id="status-box">
+          <div class="status-title" id="status-title"></div>
+          <div class="status-detail" id="status-detail"></div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div style="display:flex;gap:6px;">
+          <span class="badge badge-test">Test Mode</span>
+          <span class="badge badge-secure">Secure</span>
+        </div>
+        <span class="powered">Powered by Razorpay</span>
+      </div>
+    </div>
+
+    <!-- Test Cards Panel -->
+    <details class="test-panel" open>
+      <summary>Test Cards</summary>
+      <div class="test-cards-body">
+        <div class="tc-label">Card</div>
+        <div class="tc-row">
+          <span class="tc-num">4111 1111 1111 1111</span>
+          <span class="tc-desc">Visa — Success</span>
+          <span class="tc-result tc-ok">Succeeds</span>
+        </div>
+        <div class="tc-row">
+          <span class="tc-num">4000 0000 0000 0002</span>
+          <span class="tc-desc">Insufficient funds</span>
+          <span class="tc-result tc-fail">Declined</span>
+        </div>
+        <div class="tc-label">UPI</div>
+        <div class="tc-row">
+          <span class="tc-num">success@razorpay</span>
+          <span class="tc-desc">Any UPI VPA</span>
+          <span class="tc-result tc-ok">Succeeds</span>
+        </div>
+        <div class="tc-row">
+          <span class="tc-num">failure@razorpay</span>
+          <span class="tc-desc">Force fail</span>
+          <span class="tc-result tc-fail">Declined</span>
+        </div>
+        <div class="tc-label">OTP</div>
+        <div class="tc-row">
+          <span class="tc-num">1234</span>
+          <span class="tc-desc">Test OTP</span>
+          <span class="tc-result tc-ok">Passes</span>
+        </div>
+        <div class="tc-label">CVV / Expiry</div>
+        <div class="tc-row">
+          <span class="tc-num">Any 3 digits</span>
+          <span class="tc-desc">Any future date</span>
+          <span class="tc-result" style="color:var(--muted);">Any</span>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- Recent Payments Feed -->
+  <div class="recent-feed">
+    <div class="feed-title">Recent Recovered Payments</div>
+    <div id="payments-list">
+      <div class="empty-feed">No payments yet — make a test payment above to see it appear here</div>
+    </div>
+  </div>
+
+  <script>
+    const RAZORPAY_KEY_ID = "{{ razorpay_key_id }}";
+    let lastCount = 0;
+    let currentAmountPaise = 0;
+
+    // ── Helpers ───────────────────────────────────────────
+    function fmtINR(amount) {
+      return "Rs." + parseFloat(amount).toLocaleString("en-IN", {
+        minimumFractionDigits: 2, maximumFractionDigits: 2
+      });
+    }
+
+    function setLoading(on) {
+      const btn = document.getElementById("pay-btn");
+      document.getElementById("btn-spinner").style.display = on ? "block" : "none";
+      document.getElementById("btn-text").textContent = on ? "Creating order..." : "Pay Now";
+      btn.disabled = on;
+    }
+
+    function showStatus(type, title, detail) {
+      const box = document.getElementById("status-box");
+      box.className = type;
+      box.style.display = "block";
+      document.getElementById("status-title").textContent = title;
+      document.getElementById("status-detail").textContent = detail || "";
+    }
+
+    // ── Live Stats Polling ────────────────────────────────
+    function updateStats(data) {
+      const amountEl = document.getElementById("stat-amount");
+      const countEl  = document.getElementById("stat-count");
+      const rateEl   = document.getElementById("stat-rate");
+
+      amountEl.textContent = fmtINR(data.total_recovered_inr);
+      countEl.textContent  = data.total_recovered_count;
+      rateEl.textContent   = data.recovery_rate_pct.toFixed(1) + "%";
+
+      // Flash on new payment
+      if (data.total_recovered_count > lastCount) {
+        [amountEl, countEl, rateEl].forEach(el => {
+          el.classList.add("updated");
+          setTimeout(() => el.classList.remove("updated"), 1500);
+        });
+        lastCount = data.total_recovered_count;
+      }
+
+      // Last updated
+      if (data.last_updated) {
+        const dt = new Date(data.last_updated);
+        document.getElementById("last-updated-text").textContent =
+          "Last payment: " + dt.toLocaleTimeString();
+      }
+
+      // Recent payments feed
+      const list = document.getElementById("payments-list");
+      if (data.recent_payments && data.recent_payments.length > 0) {
+        list.innerHTML = data.recent_payments.map(p => `
+          <div class="payment-item">
+            <div class="pi-left">
+              <span class="pi-event">${p.event.replace("payment.", "").replace("_", " ")}</span>
+              <span class="pi-id">${p.payment_id} &bull; ${p.order_id || "direct"}</span>
+            </div>
+            <div class="pi-right">
+              <div class="pi-amount">${fmtINR(p.amount_inr)}</div>
+              <div class="pi-time">${new Date(p.recorded_at).toLocaleTimeString()}</div>
+            </div>
+          </div>
+        `).join("");
+
+        // Show last payment badge
+        const badge = document.getElementById("last-payment-badge");
+        badge.textContent = "+" + fmtINR(data.recent_payments[0].amount_inr) + " recovered";
+        badge.style.display = "inline-flex";
+      }
+    }
+
+    async function pollStats() {
+      try {
+        const res = await fetch("/api/recovery-stats");
+        if (res.ok) {
+          const data = await res.json();
+          updateStats(data);
+        }
+      } catch (e) { /* server may be restarting */ }
+    }
+
+    // Poll every 3 seconds
+    pollStats();
+    setInterval(pollStats, 3000);
+
+    // ── Payment Flow ──────────────────────────────────────
+    async function initiatePayment() {
+      document.getElementById("status-box").style.display = "none";
+
+      const amountRaw = parseFloat(document.getElementById("amount-input").value);
+      const name      = document.getElementById("name-input").value.trim() || "Customer";
+      const contact   = document.getElementById("contact-input").value.trim();
+
+      if (isNaN(amountRaw) || amountRaw < 1) {
+        showStatus("error", "Invalid Amount", "Please enter at least Rs.1.00");
+        return;
+      }
+      currentAmountPaise = Math.round(amountRaw * 100);
+      setLoading(true);
+
+      // Step 1: Create order
+      let orderData;
+      try {
+        const res = await fetch("/api/create-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount: currentAmountPaise, currency: "INR" }),
+        });
+        orderData = await res.json();
+        if (!res.ok) {
+          setLoading(false);
+          showStatus("error", "Order Failed", orderData.error || `HTTP ${res.status}`);
+          return;
+        }
+      } catch (err) {
+        setLoading(false);
+        showStatus("error", "Network Error", "Is the Flask server running?");
+        return;
+      }
+
+      setLoading(false);
+
+      // Step 2: Open Razorpay modal
+      const rzp = new Razorpay({
+        key:         RAZORPAY_KEY_ID,
+        amount:      orderData.amount,
+        currency:    orderData.currency,
+        order_id:    orderData.order_id,
+        name:        "Razorpay Revive",
+        description: "Payment Recovery Demo",
+        theme:       { color: "#00c9a7" },
+        prefill:     { name, contact, email: "test@razorpay-revive.dev" },
+
+        handler: async function(response) {
+          showStatus("warning", "Verifying payment signature...", "");
+
+          try {
+            const vRes = await fetch("/api/verify-payment", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                razorpay_order_id:   response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature:  response.razorpay_signature,
+                amount_paise:        currentAmountPaise,
+              }),
+            });
+            const vData = await vRes.json();
+
+            if (vRes.ok && vData.status === "ok") {
+              showStatus(
+                "success",
+                "Payment Verified & Recorded!",
+                `Payment ID: ${response.razorpay_payment_id}`
+              );
+              // Immediately refresh stats
+              setTimeout(pollStats, 500);
+            } else {
+              showStatus("error", "Signature Mismatch", vData.message || "Contact support.");
+            }
+          } catch (err) {
+            showStatus("error", "Verify failed", err.message);
+          }
+        },
+      });
+
+      rzp.on("payment.failed", function(r) {
+        showStatus("error",
+          "Payment Failed — " + r.error.code,
+          r.error.description + " (" + r.error.reason + ")"
+        );
+      });
+
+      rzp.open();
+    }
+
+    document.getElementById("amount-input").addEventListener("keydown", e => {
+      if (e.key === "Enter") initiatePayment();
+    });
+  </script>
+</body>
+</html>

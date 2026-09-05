@@ -1,0 +1,31 @@
+{
+  "total_recovered_inr": 2250.0,
+  "total_recovered_count": 3,
+  "payments": [
+    {
+      "payment_id": "pay_SIMD217906E84CA48",
+      "order_id": "order_SIM3DAC45ED83E5",
+      "amount_inr": 750.0,
+      "amount_paise": 75000,
+      "event": "payment.captured",
+      "recorded_at": "2026-09-05T15:31:29.419228+00:00"
+    },
+    {
+      "payment_id": "pay_SIMC76F8185FF6046",
+      "order_id": "order_SIMADFA8D2F7B37",
+      "amount_inr": 750.0,
+      "amount_paise": 75000,
+      "event": "payment.captured",
+      "recorded_at": "2026-09-05T15:31:31.990086+00:00"
+    },
+    {
+      "payment_id": "pay_SIMDDC10E7D71304F",
+      "order_id": "order_SIM8E2C021CAFE9",
+      "amount_inr": 750.0,
+      "amount_paise": 75000,
+      "event": "payment.captured",
+      "recorded_at": "2026-09-05T15:31:34.552489+00:00"
+    }
+  ],
+  "last_updated": "2026-09-05T15:31:34.552489+00:00"
+}
