@@ -1,0 +1,1402 @@
+[
+  {
+    "payment_id": "pay_00001",
+    "amount_inr": 1133.21,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00011",
+    "customer_history": {
+      "months_as_customer": 48,
+      "past_success_count": 6,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T19:19:42+05:30"
+  },
+  {
+    "payment_id": "pay_00002",
+    "amount_inr": 8460.77,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00003",
+    "customer_history": {
+      "months_as_customer": 31,
+      "past_success_count": 5,
+      "past_failure_count": 12
+    },
+    "timestamp": "2026-09-05T22:50:46+05:30"
+  },
+  {
+    "payment_id": "pay_00003",
+    "amount_inr": 2279.7,
+    "error_code": "card_disabled_for_online_payments",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00018",
+    "customer_history": {
+      "months_as_customer": 46,
+      "past_success_count": 14,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T17:39:08+05:30"
+  },
+  {
+    "payment_id": "pay_00004",
+    "amount_inr": 1312.1,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00018",
+    "customer_history": {
+      "months_as_customer": 46,
+      "past_success_count": 14,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T18:49:03+05:30"
+  },
+  {
+    "payment_id": "pay_00005",
+    "amount_inr": 2439.37,
+    "error_code": "payment_cancelled",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00025",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 13,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T21:13:39+05:30"
+  },
+  {
+    "payment_id": "pay_00006",
+    "amount_inr": 1257.81,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "upi",
+    "customer_id": "cust_00021",
+    "customer_history": {
+      "months_as_customer": 7,
+      "past_success_count": 37,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T11:12:10+05:30"
+  },
+  {
+    "payment_id": "pay_00007",
+    "amount_inr": 1795.49,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00008",
+    "customer_history": {
+      "months_as_customer": 57,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T09:07:51+05:30"
+  },
+  {
+    "payment_id": "pay_00008",
+    "amount_inr": 506.23,
+    "error_code": "payment_cancelled",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00003",
+    "customer_history": {
+      "months_as_customer": 31,
+      "past_success_count": 5,
+      "past_failure_count": 12
+    },
+    "timestamp": "2026-09-05T12:54:00+05:30"
+  },
+  {
+    "payment_id": "pay_00009",
+    "amount_inr": 1722.25,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00018",
+    "customer_history": {
+      "months_as_customer": 46,
+      "past_success_count": 14,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T17:36:36+05:30"
+  },
+  {
+    "payment_id": "pay_00010",
+    "amount_inr": 937.04,
+    "error_code": "payment_failed",
+    "error_source": "gateway",
+    "payment_method": "upi",
+    "customer_id": "cust_00026",
+    "customer_history": {
+      "months_as_customer": 19,
+      "past_success_count": 81,
+      "past_failure_count": 4
+    },
+    "timestamp": "2026-09-05T16:50:49+05:30"
+  },
+  {
+    "payment_id": "pay_00011",
+    "amount_inr": 612.29,
+    "error_code": "bank_technical_error",
+    "error_source": "gateway",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00012",
+    "customer_history": {
+      "months_as_customer": 9,
+      "past_success_count": 80,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T09:59:10+05:30"
+  },
+  {
+    "payment_id": "pay_00012",
+    "amount_inr": 2383.6,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00022",
+    "customer_history": {
+      "months_as_customer": 10,
+      "past_success_count": 58,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T12:29:16+05:30"
+  },
+  {
+    "payment_id": "pay_00013",
+    "amount_inr": 819.28,
+    "error_code": "authentication_failed",
+    "error_source": "customer",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00007",
+    "customer_history": {
+      "months_as_customer": 47,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T17:25:18+05:30"
+  },
+  {
+    "payment_id": "pay_00014",
+    "amount_inr": 854.32,
+    "error_code": "authentication_failed",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00008",
+    "customer_history": {
+      "months_as_customer": 57,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T19:01:06+05:30"
+  },
+  {
+    "payment_id": "pay_00015",
+    "amount_inr": 2363.1,
+    "error_code": "bank_technical_error",
+    "error_source": "gateway",
+    "payment_method": "card",
+    "customer_id": "cust_00004",
+    "customer_history": {
+      "months_as_customer": 29,
+      "past_success_count": 2,
+      "past_failure_count": 8
+    },
+    "timestamp": "2026-09-05T09:16:07+05:30"
+  },
+  {
+    "payment_id": "pay_00016",
+    "amount_inr": 615.76,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "card",
+    "customer_id": "cust_00003",
+    "customer_history": {
+      "months_as_customer": 31,
+      "past_success_count": 5,
+      "past_failure_count": 12
+    },
+    "timestamp": "2026-09-05T12:53:28+05:30"
+  },
+  {
+    "payment_id": "pay_00017",
+    "amount_inr": 2905.6,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "upi",
+    "customer_id": "cust_00028",
+    "customer_history": {
+      "months_as_customer": 23,
+      "past_success_count": 97,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T09:02:21+05:30"
+  },
+  {
+    "payment_id": "pay_00018",
+    "amount_inr": 337.27,
+    "error_code": "card_expired",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00013",
+    "customer_history": {
+      "months_as_customer": 50,
+      "past_success_count": 87,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T17:16:59+05:30"
+  },
+  {
+    "payment_id": "pay_00019",
+    "amount_inr": 4082.14,
+    "error_code": "bank_technical_error",
+    "error_source": "gateway",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00010",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 63,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T19:07:02+05:30"
+  },
+  {
+    "payment_id": "pay_00020",
+    "amount_inr": 1466.51,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00022",
+    "customer_history": {
+      "months_as_customer": 10,
+      "past_success_count": 58,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T12:57:47+05:30"
+  },
+  {
+    "payment_id": "pay_00021",
+    "amount_inr": 1901.86,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00002",
+    "customer_history": {
+      "months_as_customer": 20,
+      "past_success_count": 5,
+      "past_failure_count": 9
+    },
+    "timestamp": "2026-09-05T22:36:59+05:30"
+  },
+  {
+    "payment_id": "pay_00022",
+    "amount_inr": 347.81,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00011",
+    "customer_history": {
+      "months_as_customer": 48,
+      "past_success_count": 6,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T18:09:14+05:30"
+  },
+  {
+    "payment_id": "pay_00023",
+    "amount_inr": 2664.44,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00030",
+    "customer_history": {
+      "months_as_customer": 58,
+      "past_success_count": 0,
+      "past_failure_count": 4
+    },
+    "timestamp": "2026-09-05T18:14:41+05:30"
+  },
+  {
+    "payment_id": "pay_00024",
+    "amount_inr": 3449.81,
+    "error_code": "payment_risk_check_failed",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00003",
+    "customer_history": {
+      "months_as_customer": 31,
+      "past_success_count": 5,
+      "past_failure_count": 12
+    },
+    "timestamp": "2026-09-05T19:22:14+05:30"
+  },
+  {
+    "payment_id": "pay_00025",
+    "amount_inr": 1988.88,
+    "error_code": "payment_failed",
+    "error_source": "gateway",
+    "payment_method": "card",
+    "customer_id": "cust_00008",
+    "customer_history": {
+      "months_as_customer": 57,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T19:37:31+05:30"
+  },
+  {
+    "payment_id": "pay_00026",
+    "amount_inr": 1066.68,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00019",
+    "customer_history": {
+      "months_as_customer": 56,
+      "past_success_count": 68,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T21:11:31+05:30"
+  },
+  {
+    "payment_id": "pay_00027",
+    "amount_inr": 1059.94,
+    "error_code": "card_not_enrolled",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00023",
+    "customer_history": {
+      "months_as_customer": 46,
+      "past_success_count": 92,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T11:22:57+05:30"
+  },
+  {
+    "payment_id": "pay_00028",
+    "amount_inr": 2167.05,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00022",
+    "customer_history": {
+      "months_as_customer": 10,
+      "past_success_count": 58,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T22:41:14+05:30"
+  },
+  {
+    "payment_id": "pay_00029",
+    "amount_inr": 507.89,
+    "error_code": "incorrect_cvv",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00030",
+    "customer_history": {
+      "months_as_customer": 58,
+      "past_success_count": 0,
+      "past_failure_count": 4
+    },
+    "timestamp": "2026-09-05T19:14:56+05:30"
+  },
+  {
+    "payment_id": "pay_00030",
+    "amount_inr": 1665.28,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00004",
+    "customer_history": {
+      "months_as_customer": 29,
+      "past_success_count": 2,
+      "past_failure_count": 8
+    },
+    "timestamp": "2026-09-05T11:24:40+05:30"
+  },
+  {
+    "payment_id": "pay_00031",
+    "amount_inr": 1212.72,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00030",
+    "customer_history": {
+      "months_as_customer": 58,
+      "past_success_count": 0,
+      "past_failure_count": 4
+    },
+    "timestamp": "2026-09-05T18:53:20+05:30"
+  },
+  {
+    "payment_id": "pay_00032",
+    "amount_inr": 2791.64,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "upi",
+    "customer_id": "cust_00023",
+    "customer_history": {
+      "months_as_customer": 46,
+      "past_success_count": 92,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T21:04:35+05:30"
+  },
+  {
+    "payment_id": "pay_00033",
+    "amount_inr": 2224.2,
+    "error_code": "authentication_failed",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00004",
+    "customer_history": {
+      "months_as_customer": 29,
+      "past_success_count": 2,
+      "past_failure_count": 8
+    },
+    "timestamp": "2026-09-05T14:07:45+05:30"
+  },
+  {
+    "payment_id": "pay_00034",
+    "amount_inr": 2182.5,
+    "error_code": "authentication_failed",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00020",
+    "customer_history": {
+      "months_as_customer": 49,
+      "past_success_count": 82,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T20:32:45+05:30"
+  },
+  {
+    "payment_id": "pay_00035",
+    "amount_inr": 1514.94,
+    "error_code": "bank_technical_error",
+    "error_source": "gateway",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00028",
+    "customer_history": {
+      "months_as_customer": 23,
+      "past_success_count": 97,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T09:55:29+05:30"
+  },
+  {
+    "payment_id": "pay_00036",
+    "amount_inr": 1297.52,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00003",
+    "customer_history": {
+      "months_as_customer": 31,
+      "past_success_count": 5,
+      "past_failure_count": 12
+    },
+    "timestamp": "2026-09-05T09:03:52+05:30"
+  },
+  {
+    "payment_id": "pay_00037",
+    "amount_inr": 4182.16,
+    "error_code": "debit_instrument_blocked",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00011",
+    "customer_history": {
+      "months_as_customer": 48,
+      "past_success_count": 6,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T13:46:07+05:30"
+  },
+  {
+    "payment_id": "pay_00038",
+    "amount_inr": 1143.68,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00006",
+    "customer_history": {
+      "months_as_customer": 35,
+      "past_success_count": 68,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T19:12:39+05:30"
+  },
+  {
+    "payment_id": "pay_00039",
+    "amount_inr": 2041.22,
+    "error_code": "card_not_enrolled",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00001",
+    "customer_history": {
+      "months_as_customer": 13,
+      "past_success_count": 5,
+      "past_failure_count": 15
+    },
+    "timestamp": "2026-09-05T09:39:21+05:30"
+  },
+  {
+    "payment_id": "pay_00040",
+    "amount_inr": 1713.24,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00027",
+    "customer_history": {
+      "months_as_customer": 38,
+      "past_success_count": 25,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T11:19:12+05:30"
+  },
+  {
+    "payment_id": "pay_00041",
+    "amount_inr": 811.94,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00002",
+    "customer_history": {
+      "months_as_customer": 20,
+      "past_success_count": 5,
+      "past_failure_count": 9
+    },
+    "timestamp": "2026-09-05T21:08:28+05:30"
+  },
+  {
+    "payment_id": "pay_00042",
+    "amount_inr": 950.46,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00004",
+    "customer_history": {
+      "months_as_customer": 29,
+      "past_success_count": 2,
+      "past_failure_count": 8
+    },
+    "timestamp": "2026-09-05T16:23:52+05:30"
+  },
+  {
+    "payment_id": "pay_00043",
+    "amount_inr": 2683.54,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00020",
+    "customer_history": {
+      "months_as_customer": 49,
+      "past_success_count": 82,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T21:45:58+05:30"
+  },
+  {
+    "payment_id": "pay_00044",
+    "amount_inr": 187.97,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00004",
+    "customer_history": {
+      "months_as_customer": 29,
+      "past_success_count": 2,
+      "past_failure_count": 8
+    },
+    "timestamp": "2026-09-05T17:22:46+05:30"
+  },
+  {
+    "payment_id": "pay_00045",
+    "amount_inr": 406.19,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00012",
+    "customer_history": {
+      "months_as_customer": 9,
+      "past_success_count": 80,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T13:08:35+05:30"
+  },
+  {
+    "payment_id": "pay_00046",
+    "amount_inr": 2161.03,
+    "error_code": "payment_cancelled",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00008",
+    "customer_history": {
+      "months_as_customer": 57,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T14:04:18+05:30"
+  },
+  {
+    "payment_id": "pay_00047",
+    "amount_inr": 3648.59,
+    "error_code": "authentication_failed",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00028",
+    "customer_history": {
+      "months_as_customer": 23,
+      "past_success_count": 97,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T20:40:40+05:30"
+  },
+  {
+    "payment_id": "pay_00048",
+    "amount_inr": 7252.65,
+    "error_code": "authentication_failed",
+    "error_source": "customer",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00017",
+    "customer_history": {
+      "months_as_customer": 55,
+      "past_success_count": 1,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T15:01:42+05:30"
+  },
+  {
+    "payment_id": "pay_00049",
+    "amount_inr": 3021.88,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00001",
+    "customer_history": {
+      "months_as_customer": 13,
+      "past_success_count": 5,
+      "past_failure_count": 15
+    },
+    "timestamp": "2026-09-05T19:34:09+05:30"
+  },
+  {
+    "payment_id": "pay_00050",
+    "amount_inr": 579.83,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00009",
+    "customer_history": {
+      "months_as_customer": 23,
+      "past_success_count": 28,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T22:15:45+05:30"
+  },
+  {
+    "payment_id": "pay_00051",
+    "amount_inr": 1249.41,
+    "error_code": "transaction_limit_exceeded",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00026",
+    "customer_history": {
+      "months_as_customer": 19,
+      "past_success_count": 81,
+      "past_failure_count": 4
+    },
+    "timestamp": "2026-09-05T18:48:07+05:30"
+  },
+  {
+    "payment_id": "pay_00052",
+    "amount_inr": 722.05,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00022",
+    "customer_history": {
+      "months_as_customer": 10,
+      "past_success_count": 58,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T21:05:31+05:30"
+  },
+  {
+    "payment_id": "pay_00053",
+    "amount_inr": 2478.34,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00030",
+    "customer_history": {
+      "months_as_customer": 58,
+      "past_success_count": 0,
+      "past_failure_count": 4
+    },
+    "timestamp": "2026-09-05T11:16:07+05:30"
+  },
+  {
+    "payment_id": "pay_00054",
+    "amount_inr": 1544.67,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "upi",
+    "customer_id": "cust_00024",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 97,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T14:56:16+05:30"
+  },
+  {
+    "payment_id": "pay_00055",
+    "amount_inr": 1645.21,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00013",
+    "customer_history": {
+      "months_as_customer": 50,
+      "past_success_count": 87,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T21:06:16+05:30"
+  },
+  {
+    "payment_id": "pay_00056",
+    "amount_inr": 2265.42,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00013",
+    "customer_history": {
+      "months_as_customer": 50,
+      "past_success_count": 87,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T19:21:36+05:30"
+  },
+  {
+    "payment_id": "pay_00057",
+    "amount_inr": 898.08,
+    "error_code": "authentication_failed",
+    "error_source": "customer",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00010",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 63,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T19:33:29+05:30"
+  },
+  {
+    "payment_id": "pay_00058",
+    "amount_inr": 1376.2,
+    "error_code": "payment_cancelled",
+    "error_source": "customer",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00020",
+    "customer_history": {
+      "months_as_customer": 49,
+      "past_success_count": 82,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T12:53:25+05:30"
+  },
+  {
+    "payment_id": "pay_00059",
+    "amount_inr": 1033.62,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00017",
+    "customer_history": {
+      "months_as_customer": 55,
+      "past_success_count": 1,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T22:23:51+05:30"
+  },
+  {
+    "payment_id": "pay_00060",
+    "amount_inr": 620.46,
+    "error_code": "authentication_failed",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00006",
+    "customer_history": {
+      "months_as_customer": 35,
+      "past_success_count": 68,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T20:16:23+05:30"
+  },
+  {
+    "payment_id": "pay_00061",
+    "amount_inr": 884.97,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00011",
+    "customer_history": {
+      "months_as_customer": 48,
+      "past_success_count": 6,
+      "past_failure_count": 0
+    },
+    "timestamp": "2026-09-05T12:37:30+05:30"
+  },
+  {
+    "payment_id": "pay_00062",
+    "amount_inr": 2901.16,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00005",
+    "customer_history": {
+      "months_as_customer": 8,
+      "past_success_count": 31,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T17:17:26+05:30"
+  },
+  {
+    "payment_id": "pay_00063",
+    "amount_inr": 2439.79,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00014",
+    "customer_history": {
+      "months_as_customer": 38,
+      "past_success_count": 8,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T16:16:31+05:30"
+  },
+  {
+    "payment_id": "pay_00064",
+    "amount_inr": 6707.89,
+    "error_code": "payment_cancelled",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00008",
+    "customer_history": {
+      "months_as_customer": 57,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T10:56:25+05:30"
+  },
+  {
+    "payment_id": "pay_00065",
+    "amount_inr": 209.22,
+    "error_code": "payment_failed",
+    "error_source": "gateway",
+    "payment_method": "upi",
+    "customer_id": "cust_00025",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 13,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T21:40:07+05:30"
+  },
+  {
+    "payment_id": "pay_00066",
+    "amount_inr": 1343.85,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00017",
+    "customer_history": {
+      "months_as_customer": 55,
+      "past_success_count": 1,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T11:12:33+05:30"
+  },
+  {
+    "payment_id": "pay_00067",
+    "amount_inr": 5206.35,
+    "error_code": "payment_failed",
+    "error_source": "gateway",
+    "payment_method": "card",
+    "customer_id": "cust_00015",
+    "customer_history": {
+      "months_as_customer": 24,
+      "past_success_count": 76,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T19:10:29+05:30"
+  },
+  {
+    "payment_id": "pay_00068",
+    "amount_inr": 2601.8,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00020",
+    "customer_history": {
+      "months_as_customer": 49,
+      "past_success_count": 82,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T18:11:21+05:30"
+  },
+  {
+    "payment_id": "pay_00069",
+    "amount_inr": 4091.45,
+    "error_code": "card_disabled_for_online_payments",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00014",
+    "customer_history": {
+      "months_as_customer": 38,
+      "past_success_count": 8,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T11:53:50+05:30"
+  },
+  {
+    "payment_id": "pay_00070",
+    "amount_inr": 3697.37,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00024",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 97,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T22:41:08+05:30"
+  },
+  {
+    "payment_id": "pay_00071",
+    "amount_inr": 3214.1,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00008",
+    "customer_history": {
+      "months_as_customer": 57,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T20:24:34+05:30"
+  },
+  {
+    "payment_id": "pay_00072",
+    "amount_inr": 1072.65,
+    "error_code": "debit_instrument_inactive",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00008",
+    "customer_history": {
+      "months_as_customer": 57,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T14:12:05+05:30"
+  },
+  {
+    "payment_id": "pay_00073",
+    "amount_inr": 182.58,
+    "error_code": "authentication_failed",
+    "error_source": "customer",
+    "payment_method": "netbanking",
+    "customer_id": "cust_00008",
+    "customer_history": {
+      "months_as_customer": 57,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T10:28:00+05:30"
+  },
+  {
+    "payment_id": "pay_00074",
+    "amount_inr": 689.87,
+    "error_code": "card_expired",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00005",
+    "customer_history": {
+      "months_as_customer": 8,
+      "past_success_count": 31,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T11:46:54+05:30"
+  },
+  {
+    "payment_id": "pay_00075",
+    "amount_inr": 546.57,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "card",
+    "customer_id": "cust_00023",
+    "customer_history": {
+      "months_as_customer": 46,
+      "past_success_count": 92,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T18:52:40+05:30"
+  },
+  {
+    "payment_id": "pay_00076",
+    "amount_inr": 1296.58,
+    "error_code": "incorrect_cvv",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00015",
+    "customer_history": {
+      "months_as_customer": 24,
+      "past_success_count": 76,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T16:38:54+05:30"
+  },
+  {
+    "payment_id": "pay_00077",
+    "amount_inr": 5704.87,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00013",
+    "customer_history": {
+      "months_as_customer": 50,
+      "past_success_count": 87,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T21:39:41+05:30"
+  },
+  {
+    "payment_id": "pay_00078",
+    "amount_inr": 863.89,
+    "error_code": "payment_cancelled",
+    "error_source": "customer",
+    "payment_method": "wallet",
+    "customer_id": "cust_00001",
+    "customer_history": {
+      "months_as_customer": 13,
+      "past_success_count": 5,
+      "past_failure_count": 15
+    },
+    "timestamp": "2026-09-05T14:26:09+05:30"
+  },
+  {
+    "payment_id": "pay_00079",
+    "amount_inr": 372.35,
+    "error_code": "card_not_enrolled",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00025",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 13,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T16:37:40+05:30"
+  },
+  {
+    "payment_id": "pay_00080",
+    "amount_inr": 1467.04,
+    "error_code": "bank_technical_error",
+    "error_source": "gateway",
+    "payment_method": "card",
+    "customer_id": "cust_00018",
+    "customer_history": {
+      "months_as_customer": 46,
+      "past_success_count": 14,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T17:50:27+05:30"
+  },
+  {
+    "payment_id": "pay_00081",
+    "amount_inr": 744.18,
+    "error_code": "payment_cancelled",
+    "error_source": "customer",
+    "payment_method": "wallet",
+    "customer_id": "cust_00001",
+    "customer_history": {
+      "months_as_customer": 13,
+      "past_success_count": 5,
+      "past_failure_count": 15
+    },
+    "timestamp": "2026-09-05T16:21:37+05:30"
+  },
+  {
+    "payment_id": "pay_00082",
+    "amount_inr": 632.77,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00024",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 97,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T11:19:24+05:30"
+  },
+  {
+    "payment_id": "pay_00083",
+    "amount_inr": 2480.97,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00020",
+    "customer_history": {
+      "months_as_customer": 49,
+      "past_success_count": 82,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T19:46:30+05:30"
+  },
+  {
+    "payment_id": "pay_00084",
+    "amount_inr": 1914.91,
+    "error_code": "incorrect_cvv",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00019",
+    "customer_history": {
+      "months_as_customer": 56,
+      "past_success_count": 68,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T16:48:09+05:30"
+  },
+  {
+    "payment_id": "pay_00085",
+    "amount_inr": 831.16,
+    "error_code": "payment_risk_check_failed",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00005",
+    "customer_history": {
+      "months_as_customer": 8,
+      "past_success_count": 31,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T14:57:33+05:30"
+  },
+  {
+    "payment_id": "pay_00086",
+    "amount_inr": 554.44,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00007",
+    "customer_history": {
+      "months_as_customer": 47,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T15:54:06+05:30"
+  },
+  {
+    "payment_id": "pay_00087",
+    "amount_inr": 1035.77,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "upi",
+    "customer_id": "cust_00009",
+    "customer_history": {
+      "months_as_customer": 23,
+      "past_success_count": 28,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T09:21:10+05:30"
+  },
+  {
+    "payment_id": "pay_00088",
+    "amount_inr": 3847.35,
+    "error_code": "bank_technical_error",
+    "error_source": "gateway",
+    "payment_method": "card",
+    "customer_id": "cust_00024",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 97,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T20:51:53+05:30"
+  },
+  {
+    "payment_id": "pay_00089",
+    "amount_inr": 317.75,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00002",
+    "customer_history": {
+      "months_as_customer": 20,
+      "past_success_count": 5,
+      "past_failure_count": 9
+    },
+    "timestamp": "2026-09-05T19:16:00+05:30"
+  },
+  {
+    "payment_id": "pay_00090",
+    "amount_inr": 4854.2,
+    "error_code": "payment_cancelled",
+    "error_source": "customer",
+    "payment_method": "wallet",
+    "customer_id": "cust_00007",
+    "customer_history": {
+      "months_as_customer": 47,
+      "past_success_count": 74,
+      "past_failure_count": 3
+    },
+    "timestamp": "2026-09-05T12:03:16+05:30"
+  },
+  {
+    "payment_id": "pay_00091",
+    "amount_inr": 2689.55,
+    "error_code": "card_not_enrolled",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00020",
+    "customer_history": {
+      "months_as_customer": 49,
+      "past_success_count": 82,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T11:05:06+05:30"
+  },
+  {
+    "payment_id": "pay_00092",
+    "amount_inr": 582.37,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00025",
+    "customer_history": {
+      "months_as_customer": 32,
+      "past_success_count": 13,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T21:19:50+05:30"
+  },
+  {
+    "payment_id": "pay_00093",
+    "amount_inr": 911.9,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00030",
+    "customer_history": {
+      "months_as_customer": 58,
+      "past_success_count": 0,
+      "past_failure_count": 4
+    },
+    "timestamp": "2026-09-05T10:23:00+05:30"
+  },
+  {
+    "payment_id": "pay_00094",
+    "amount_inr": 3026.09,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00019",
+    "customer_history": {
+      "months_as_customer": 56,
+      "past_success_count": 68,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T10:51:18+05:30"
+  },
+  {
+    "payment_id": "pay_00095",
+    "amount_inr": 1754.62,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00023",
+    "customer_history": {
+      "months_as_customer": 46,
+      "past_success_count": 92,
+      "past_failure_count": 2
+    },
+    "timestamp": "2026-09-05T19:18:08+05:30"
+  },
+  {
+    "payment_id": "pay_00096",
+    "amount_inr": 1039.37,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00026",
+    "customer_history": {
+      "months_as_customer": 19,
+      "past_success_count": 81,
+      "past_failure_count": 4
+    },
+    "timestamp": "2026-09-05T15:44:45+05:30"
+  },
+  {
+    "payment_id": "pay_00097",
+    "amount_inr": 1518.74,
+    "error_code": "debit_instrument_inactive",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_00003",
+    "customer_history": {
+      "months_as_customer": 31,
+      "past_success_count": 5,
+      "past_failure_count": 12
+    },
+    "timestamp": "2026-09-05T16:38:48+05:30"
+  },
+  {
+    "payment_id": "pay_00098",
+    "amount_inr": 4445.06,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00027",
+    "customer_history": {
+      "months_as_customer": 38,
+      "past_success_count": 25,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T21:52:34+05:30"
+  },
+  {
+    "payment_id": "pay_00099",
+    "amount_inr": 592.2,
+    "error_code": "insufficient_funds",
+    "error_source": "customer",
+    "payment_method": "upi",
+    "customer_id": "cust_00005",
+    "customer_history": {
+      "months_as_customer": 8,
+      "past_success_count": 31,
+      "past_failure_count": 5
+    },
+    "timestamp": "2026-09-05T20:50:28+05:30"
+  },
+  {
+    "payment_id": "pay_00100",
+    "amount_inr": 1137.5,
+    "error_code": "payment_failed",
+    "error_source": "gateway",
+    "payment_method": "upi",
+    "customer_id": "cust_00009",
+    "customer_history": {
+      "months_as_customer": 23,
+      "past_success_count": 28,
+      "past_failure_count": 1
+    },
+    "timestamp": "2026-09-05T19:47:08+05:30"
+  }
+]

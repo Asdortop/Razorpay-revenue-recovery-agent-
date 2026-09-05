@@ -1,0 +1,72 @@
+[
+  {
+    "payment_id": "pay_JkLm7n8OpQr9",
+    "amount_inr": 2499.0,
+    "error_code": "payment_failed",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_543210",
+    "customer_history": {
+      "months_as_customer": 12,
+      "past_success_count": 5,
+      "past_failure_count": 1
+    },
+    "timestamp": "2024-09-06T05:30:00"
+  },
+  {
+    "payment_id": "pay_MnOp1q2RsTuV",
+    "amount_inr": 999.0,
+    "error_code": "gateway_technical_error",
+    "error_source": "gateway",
+    "payment_method": "upi",
+    "customer_id": "cust_776655",
+    "customer_history": {
+      "months_as_customer": 12,
+      "past_success_count": 5,
+      "past_failure_count": 1
+    },
+    "timestamp": "2024-09-06T06:30:00"
+  },
+  {
+    "payment_id": "pay_QrSt3u4VwXyZ",
+    "amount_inr": 4995.0,
+    "error_code": "card_declined",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_512345",
+    "customer_history": {
+      "months_as_customer": 12,
+      "past_success_count": 5,
+      "past_failure_count": 1
+    },
+    "timestamp": "2024-09-06T07:30:00"
+  },
+  {
+    "payment_id": "pay_UvWx5y6ZaBcD",
+    "amount_inr": 1500.0,
+    "error_code": "payment_timed_out",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_234567",
+    "customer_history": {
+      "months_as_customer": 12,
+      "past_success_count": 5,
+      "past_failure_count": 1
+    },
+    "timestamp": "2024-09-06T08:30:00"
+  },
+  {
+    "payment_id": "pay_EfGh7i8JkLmN",
+    "amount_inr": 3250.0,
+    "error_code": "card_expired",
+    "error_source": "customer",
+    "payment_method": "card",
+    "customer_id": "cust_500000",
+    "customer_history": {
+      "months_as_customer": 12,
+      "past_success_count": 5,
+      "past_failure_count": 1
+    },
+    "timestamp": "2024-09-06T09:30:00"
+  }
+]
