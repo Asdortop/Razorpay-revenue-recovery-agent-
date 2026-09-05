@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Recovery Agent — Results Dashboard</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Inter', -apple-system, sans-serif;
+        background: #0a0e17;
+        color: #e2e8f0;
+        min-height: 100vh;
+        padding: 2rem;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 16px;
+    }
+    .header h1 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.3rem;
+    }
+    .header .sub {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+
+    /* KPI Cards */
+    .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .kpi {
+        background: rgba(30, 41, 59, 0.7);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .kpi:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .kpi .value {
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 0.3rem;
+    }
+    .kpi .label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #94a3b8;
+        font-weight: 500;
+    }
+    .kpi.green .value { color: #10b981; }
+    .kpi.blue .value { color: #60a5fa; }
+    .kpi.amber .value { color: #f59e0b; }
+    .kpi.red .value { color: #ef4444; }
+    .kpi.purple .value { color: #a78bfa; }
+
+    /* Sections */
+    .section {
+        background: rgba(30, 41, 59, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .section h2 {
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #94a3b8;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+    }
+    th {
+        text-align: left;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #64748b;
+        padding: 0.6rem 0.8rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        font-weight: 600;
+    }
+    td {
+        padding: 0.6rem 0.8rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.06);
+    }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    tr:hover td { background: rgba(99, 102, 241, 0.05); }
+    code {
+        background: rgba(99, 102, 241, 0.15);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        color: #a5b4fc;
+    }
+
+    /* Bar chart cells */
+    .bar-cell {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .bar {
+        height: 8px;
+        border-radius: 4px;
+        min-width: 2px;
+        transition: width 0.6s ease;
+    }
+    .bar-cell span {
+        font-size: 0.8rem;
+        font-weight: 600;
+        min-width: 48px;
+    }
+
+    /* Guardrail badges */
+    .guardrail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.8rem;
+    }
+    .guardrail {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    .guardrail.fail {
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.2);
+    }
+    .guardrail .icon { font-size: 1.4rem; }
+    .guardrail .text {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    /* Audit trail cards */
+    .audit-card {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 10px;
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+    .audit-card .audit-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.8rem;
+    }
+    .audit-card .badge {
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .badge.recovered { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+    .badge.blocked { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+    .audit-field { color: #64748b; }
+
+    /* Recovery message cards */
+    .message-card {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    .msg-header {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+    }
+    .msg-patient { font-weight: 700; color: #60a5fa; }
+    .msg-amount { color: #f59e0b; font-weight: 600; margin-left: auto; }
+    .msg-body {
+        background: rgba(16, 185, 129, 0.06);
+        border: 1px solid rgba(16, 185, 129, 0.15);
+        border-radius: 8px;
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: #d1d5db;
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        color: #475569;
+        font-size: 0.75rem;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(148, 163, 184, 0.1);
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>Payment Recovery Agent</h1>
+        <p class="sub">Track 03 — AI Revenue Recovery | Razorpay Buildathon 2026</p>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="kpi-grid">
+        <div class="kpi blue">
+            <div class="value">100</div>
+            <div class="label">Failed Payments</div>
+        </div>
+        <div class="kpi amber">
+            <div class="value">₹191,350</div>
+            <div class="label">Amount at Risk</div>
+        </div>
+        <div class="kpi green">
+            <div class="value">₹0</div>
+            <div class="label">Amount Recovered</div>
+        </div>
+        <div class="kpi purple">
+            <div class="value">0.0%</div>
+            <div class="label">Recovery Rate</div>
+        </div>
+        <div class="kpi red">
+            <div class="value">2</div>
+            <div class="label">Fraud Blocked</div>
+        </div>
+    </div>
+
+    <!-- Breakdown by Error Code -->
+    <div class="section">
+        <h2>Recovery by Error Code</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Error Code</th>
+                    <th style="text-align:right">Count</th>
+                    <th style="text-align:right">At Risk</th>
+                    <th style="text-align:right">Recovered</th>
+                    <th>Recovery Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td><code>payment_timed_out</code></td>
+            <td class="num">12</td>
+            <td class="num">₹24,193</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>card_disabled_for_online_payments</code></td>
+            <td class="num">2</td>
+            <td class="num">₹6,371</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>insufficient_funds</code></td>
+            <td class="num">18</td>
+            <td class="num">₹33,244</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>payment_cancelled</code></td>
+            <td class="num">8</td>
+            <td class="num">₹19,653</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>gateway_technical_error</code></td>
+            <td class="num">10</td>
+            <td class="num">₹13,630</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>payment_failed</code></td>
+            <td class="num">5</td>
+            <td class="num">₹9,479</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>bank_technical_error</code></td>
+            <td class="num">6</td>
+            <td class="num">₹13,887</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>authentication_failed</code></td>
+            <td class="num">9</td>
+            <td class="num">₹18,683</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>card_expired</code></td>
+            <td class="num">2</td>
+            <td class="num">₹1,027</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>card_declined</code></td>
+            <td class="num">15</td>
+            <td class="num">₹28,997</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>payment_risk_check_failed</code></td>
+            <td class="num">2</td>
+            <td class="num">₹4,281</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>card_not_enrolled</code></td>
+            <td class="num">4</td>
+            <td class="num">₹6,163</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>incorrect_cvv</code></td>
+            <td class="num">3</td>
+            <td class="num">₹3,719</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>debit_instrument_blocked</code></td>
+            <td class="num">1</td>
+            <td class="num">₹4,182</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>transaction_limit_exceeded</code></td>
+            <td class="num">1</td>
+            <td class="num">₹1,249</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>debit_instrument_inactive</code></td>
+            <td class="num">2</td>
+            <td class="num">₹2,591</td>
+            <td class="num">₹0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Breakdown by Action -->
+    <div class="section">
+        <h2>Action Effectiveness</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th style="text-align:right">Attempted</th>
+                    <th style="text-align:right">Recovered</th>
+                    <th>Success Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td>Retry Immediate</td>
+            <td class="num">14</td>
+            <td class="num">0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Retry Scheduled</td>
+            <td class="num">2</td>
+            <td class="num">0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Notify Customer</td>
+            <td class="num">64</td>
+            <td class="num">0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Escalate Human</td>
+            <td class="num">18</td>
+            <td class="num">0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>No Action Fraud Flagged</td>
+            <td class="num">2</td>
+            <td class="num">0</td>
+            <td>
+                <div class="bar-cell">
+                    <div class="bar" style="width:0.0%;background:#6b7280"></div>
+                    <span>0.0%</span>
+                </div>
+            </td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Guardrail Compliance -->
+    <div class="section">
+        <h2>Guardrail Compliance</h2>
+        <div class="guardrail-grid">
+            <div class="guardrail ">
+                <span class="icon">✅</span>
+                <span class="text">Fraud payments never retried</span>
+            </div>
+            <div class="guardrail">
+                <span class="icon">✅</span>
+                <span class="text">Max retry limit enforced (0)</span>
+            </div>
+            <div class="guardrail ">
+                <span class="icon">✅</span>
+                <span class="text">Dead instruments never retried</span>
+            </div>
+            <div class="guardrail">
+                <span class="icon">🛡️</span>
+                <span class="text">2 fraud-flagged payments blocked</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recovery Messages -->
+    
+    <div class="section">
+        <h2>Personalized Recovery Messages (AI-Generated)</h2>
+        
+                <div class="message-card">
+                    <div class="msg-header">
+                        <span class="msg-patient">pay_00001</span>
+                        <span class="msg-error"><code>payment_timed_out</code></span>
+                        <span class="msg-amount">₹1,133</span>
+                    </div>
+                    <div class="msg-body">💬 Hi! Your UPI payment of ₹1133.21 timed out. Please try again when you're ready. We've scheduled a reminder to help you complete it.</div>
+                </div>
+                <div class="message-card">
+                    <div class="msg-header">
+                        <span class="msg-patient">pay_00003</span>
+                        <span class="msg-error"><code>card_disabled_for_online_payments</code></span>
+                        <span class="msg-amount">₹2,280</span>
+                    </div>
+                    <div class="msg-body">💬 Hi, your recent payment failed because your card isn't enabled for online purchases. Please contact your bank to activate online payments, then try again.</div>
+                </div>
+                <div class="message-card">
+                    <div class="msg-header">
+                        <span class="msg-patient">pay_00004</span>
+                        <span class="msg-error"><code>insufficient_funds</code></span>
+                        <span class="msg-amount">₹1,312</span>
+                    </div>
+                    <div class="msg-body">💬 Hi, your payment of $1,312.10 failed due to insufficient funds. Please ensure your card has enough balance and try again, or update your payment method.</div>
+                </div>
+                <div class="message-card">
+                    <div class="msg-header">
+                        <span class="msg-patient">pay_00005</span>
+                        <span class="msg-error"><code>payment_cancelled</code></span>
+                        <span class="msg-amount">₹2,439</span>
+                    </div>
+                    <div class="msg-body">💬 Hi, your UPI payment of ₹2439.37 was cancelled. If you intended to pay, please try again from your app.</div>
+                </div>
+                <div class="message-card">
+                    <div class="msg-header">
+                        <span class="msg-patient">pay_00010</span>
+                        <span class="msg-error"><code>payment_failed</code></span>
+                        <span class="msg-amount">₹937</span>
+                    </div>
+                    <div class="msg-body">💬 Hi, your UPI payment of ₹937.04 failed due to a bank decline. Please check your UPI ID or try again with a different payment method.</div>
+                </div>
+    </div>
+    
+
+    <!-- Sample Audit Trails -->
+    <div class="section">
+        <h2>Sample Audit Trails</h2>
+        
+        
+        <div class="audit-card">
+            <div class="audit-header">
+                <span><strong>pay_00024</strong> — ₹3,450</span>
+                <span class="badge blocked">Fraud Blocked</span>
+            </div>
+            <span class="audit-field">Error:</span> <code>payment_risk_check_failed</code><br>
+            <span class="audit-field">Action:</span> No Action Fraud Flagged<br>
+            <span class="audit-field">Guardrails:</span> fraud_block<br>
+            <span class="audit-field">Trail:</span> DIAGNOSIS: payment_risk_check_failed (customer). ACTION: no_action_fraud_flagged. REASONING: The payment failed specifically due to 'payment_risk_check_failed'. According to the rules, this category always require. OUTCOME: blocked_by_guardrail. DRY_RUN: True. GUARDRAILS: fraud_block.
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        Payment Recovery Agent — Built for Razorpay Buildathon 2026 | Track 03: AI Revenue Recovery
+    </div>
+
+</div>
+</body>
+</html>

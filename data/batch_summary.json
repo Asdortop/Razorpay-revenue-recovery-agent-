@@ -1,15 +1,15 @@
 {
-  "run_id": "run_20260905_200039",
+  "run_id": "run_20260905_202324",
   "total_records": 100,
   "total_amount_at_risk_inr": 191350.09,
-  "total_amount_recovered_inr": 40871.46,
-  "recovery_rate_pct": 21.4,
+  "total_amount_recovered_inr": 0.0,
+  "recovery_rate_pct": 0.0,
   "breakdown_by_error_code": {
     "payment_timed_out": {
       "count": 12,
       "amount_at_risk_inr": 24193.16,
-      "amount_recovered_inr": 3398.63,
-      "recovery_rate_pct": 14.0,
+      "amount_recovered_inr": 0.0,
+      "recovery_rate_pct": 0.0,
       "actions": {
         "retry_scheduled": 2,
         "escalate_human": 5,
@@ -28,8 +28,8 @@
     "insufficient_funds": {
       "count": 18,
       "amount_at_risk_inr": 33243.6,
-      "amount_recovered_inr": 3367.46,
-      "recovery_rate_pct": 10.1,
+      "amount_recovered_inr": 0.0,
+      "recovery_rate_pct": 0.0,
       "actions": {
         "notify_customer": 16,
         "escalate_human": 2
@@ -48,8 +48,8 @@
     "gateway_technical_error": {
       "count": 10,
       "amount_at_risk_inr": 13630.23,
-      "amount_recovered_inr": 12467.9,
-      "recovery_rate_pct": 91.5,
+      "amount_recovered_inr": 0.0,
+      "recovery_rate_pct": 0.0,
       "actions": {
         "retry_immediate": 9,
         "escalate_human": 1
@@ -58,8 +58,8 @@
     "payment_failed": {
       "count": 5,
       "amount_at_risk_inr": 9478.99,
-      "amount_recovered_inr": 1988.88,
-      "recovery_rate_pct": 21.0,
+      "amount_recovered_inr": 0.0,
+      "recovery_rate_pct": 0.0,
       "actions": {
         "notify_customer": 4,
         "escalate_human": 1
@@ -68,8 +68,8 @@
     "bank_technical_error": {
       "count": 6,
       "amount_at_risk_inr": 13886.86,
-      "amount_recovered_inr": 10008.82,
-      "recovery_rate_pct": 72.1,
+      "amount_recovered_inr": 0.0,
+      "recovery_rate_pct": 0.0,
       "actions": {
         "retry_immediate": 5,
         "escalate_human": 1
@@ -78,8 +78,8 @@
     "authentication_failed": {
       "count": 9,
       "amount_at_risk_inr": 18682.66,
-      "amount_recovered_inr": 3934.9,
-      "recovery_rate_pct": 21.1,
+      "amount_recovered_inr": 0.0,
+      "recovery_rate_pct": 0.0,
       "actions": {
         "notify_customer": 8,
         "escalate_human": 1
@@ -97,8 +97,8 @@
     "card_declined": {
       "count": 15,
       "amount_at_risk_inr": 28996.94,
-      "amount_recovered_inr": 5704.87,
-      "recovery_rate_pct": 19.7,
+      "amount_recovered_inr": 0.0,
+      "recovery_rate_pct": 0.0,
       "actions": {
         "escalate_human": 2,
         "notify_customer": 13
@@ -164,18 +164,18 @@
   "breakdown_by_action": {
     "retry_immediate": {
       "attempted": 14,
-      "recovered": 12,
-      "success_rate_pct": 85.7
+      "recovered": 0,
+      "success_rate_pct": 0.0
     },
     "retry_scheduled": {
       "attempted": 2,
-      "recovered": 2,
-      "success_rate_pct": 100.0
+      "recovered": 0,
+      "success_rate_pct": 0.0
     },
     "notify_customer": {
       "attempted": 64,
-      "recovered": 7,
-      "success_rate_pct": 10.9
+      "recovered": 0,
+      "success_rate_pct": 0.0
     },
     "escalate_human": {
       "attempted": 18,
@@ -190,7 +190,7 @@
   },
   "guardrail_stats": {
     "fraud_flagged_blocked": 2,
-    "max_retry_enforced": 2,
+    "max_retry_enforced": 0,
     "dead_instrument_blocked": 0,
     "fraud_retried_violations": 0,
     "dead_retried_violations": 0
@@ -201,12 +201,12 @@
       "amount_inr": 1133.21,
       "error_code": "payment_timed_out",
       "action_taken": "retry_scheduled",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1133.21,
-      "retries_used": 2,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
+      "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: retry_scheduled. REASONING: The payment failed due to a timeout, which is a timing issue. The customer has a good history (6 successes, 0 failures), so a scheduled retry is appropriate to allow them to complete the transaction later without immediate pressure.. RETRIES: 2. OUTCOME: recovered. RECOVERED Rs.1,133.21.",
-      "timestamp": "2026-09-05T14:30:39.220925+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: retry_scheduled. REASONING: The payment failed due to a timeout, which is a timing issue. The customer has a good history (6 successes, 0 failures),. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00001. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00001.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00002",
@@ -217,8 +217,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 12 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The payment failed due to a timeout, which is a customer-side behavior issue (incomplete transaction). Retrying immediately is unlikely to succeed without user interaction, and the failure count (12) is below the escalation threshold (5 is the rule trigger, but 12>5 actually triggers escalation? Wait, rule says past_failure_count>5 -> escalate_human. 12 > 5. So I must escalate).. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.220925+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 12 past failures . OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00003",
@@ -229,8 +229,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_disabled_for_online_payments (customer). ACTION: notify_customer. REASONING: The error 'card_disabled_for_online_payments' indicates the customer's card is not enrolled for online transactions. This is a customer-side configuration issue that cannot be resolved by retrying. The customer must contact their bank or enable online payments in their banking app.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.220925+00:00"
+      "audit_entry": "DIAGNOSIS: card_disabled_for_online_payments (customer). ACTION: notify_customer. REASONING: The error 'card_disabled_for_online_payments' indicates the customer's card is not enrolled for online transactions. Thi. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00003. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00003.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00004",
@@ -241,8 +241,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error is 'insufficient_funds', which is a customer-side issue requiring them to top up their account or switch payment methods. Retrying is futile until funds are available. The customer has 5 previous failures, which is below the threshold for mandatory human escalation (>5), but indicates a pattern that should be communicated clearly.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.220925+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error is 'insufficient_funds', which is a customer-side issue requiring them to top up their account or switch payme. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00004. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00004.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00005",
@@ -253,20 +253,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The error 'payment_cancelled' indicates the customer actively backed out of the transaction. Retrying is inappropriate as it contradicts the user's intent. The customer must be notified to complete the payment if they still wish to proceed.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.220925+00:00"
+      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The error 'payment_cancelled' indicates the customer actively backed out of the transaction. Retrying is inappropriate a. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00005. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00005.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00006",
       "amount_inr": 1257.81,
       "error_code": "gateway_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1257.81,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a gateway technical error indicating partner bank or payment gateway downtime, which is a transient infrastructure issue. The customer has a low failure count (3) and a good history, so an immediate retry is appropriate.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.1,257.81.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a gateway technical error indicating partner bank or payment gateway downtime, which is a tra. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00006. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00006.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00007",
@@ -277,8 +277,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's bank account lacks the necessary balance to cover the $1795.49 charge. Retrying immediately or scheduling a retry without customer intervention is unlikely to succeed unless funds are added. The customer must take action to update their payment method or ensure sufficient funds.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's bank account lacks the necessary balance to cover the $1795.49 c. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00007. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00007.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00008",
@@ -289,20 +289,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 12 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The payment was actively cancelled by the customer, indicating they backed out of the flow. Retrying would be inappropriate as the intent was withdrawn. The customer needs to be notified to complete the payment if they still wish to proceed.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 12 past failures . OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00009",
       "amount_inr": 1722.25,
       "error_code": "insufficient_funds",
       "action_taken": "notify_customer",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1722.25,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's bank account lacks the necessary balance to cover the $1722.25 charge. Retrying immediately or scheduling a retry without customer intervention is unlikely to succeed and may trigger further declines or fees. The customer must top up their account or switch payment methods.. RETRIES: 0. OUTCOME: recovered. RECOVERED Rs.1,722.25.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's bank account lacks the necessary balance to cover the $1722.25 c. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00009. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00009.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00010",
@@ -313,20 +313,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: notify_customer. REASONING: The error is a generic bank decline without specific technical details (like expired card or infra timeout). Since it is not flagged as fraud or a transient infrastructure issue, and the customer has a history of some failures, the most appropriate step is to inform the customer so they can verify their UPI ID, bank status, or try a different payment method.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: notify_customer. REASONING: The error is a generic bank decline without specific technical details (like expired card or infra timeout). Since it is. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00010. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00010.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00011",
       "amount_inr": 612.29,
       "error_code": "bank_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 612.29,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a bank technical error, which is a transient infrastructure issue. The customer has a good history (80 ok, 1 fail) and no fraud flags, so an immediate retry is appropriate.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.612.29.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a bank technical error, which is a transient infrastructure issue. The customer has a good history (80 ok, . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00011. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00011.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00012",
@@ -337,8 +337,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's account. Retrying immediately or scheduling a retry without customer intervention is unlikely to succeed and may lead to further declines. The customer must top up their account or switch payment methods.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's account. Retrying immediately or scheduling a retry witho. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00012. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00012.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00013",
@@ -349,20 +349,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' in NetBanking indicates the customer either entered the wrong OTP or abandoned the process. This is a customer-side action issue, not a system failure. Retrying automatically would likely fail again without customer input. The customer has a good history (74 ok vs 3 fail), so this is likely a one-off mistake or timeout.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' in NetBanking indicates the customer either entered the wrong OTP or abandoned the pro. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00013. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00013.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00014",
       "amount_inr": 854.32,
       "error_code": "authentication_failed",
       "action_taken": "notify_customer",
-      "execution_outcome": "recovered",
-      "amount_recovered": 854.32,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' indicates the customer either entered the wrong OTP or abandoned the process. This is a user-side issue requiring customer action to complete the transaction, not a system retry.. RETRIES: 0. OUTCOME: recovered. RECOVERED Rs.854.32.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' indicates the customer either entered the wrong OTP or abandoned the process. This is . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00014. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00014.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00015",
@@ -373,8 +373,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'retry_immediate' but customer has 8 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The error is a bank_technical_error, which is a transient infrastructure issue. The customer's past failure count (8) exceeds 5, but the rule for escalating to human is specifically for ambiguous cases or when past_failure_count > 5 in a context that doesn't clearly point to a transient infra issue. However, since the cause is explicitly transient, an immediate retry is the most appropriate action to resolve the issue without unnecessary delay.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'retry_immediate' but customer has 8 past failures (. OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00016",
@@ -385,20 +385,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'retry_immediate' but customer has 12 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The error is explicitly identified as a gateway technical error (transient infrastructure issue). The customer has a history of successful payments (5 ok) and the failure count (12) is below the escalation threshold (>5). Immediate retry is appropriate for transient infra issues.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'retry_immediate' but customer has 12 past failures . OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00017",
       "amount_inr": 2905.6,
       "error_code": "gateway_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 2905.6,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating transient downtime. The customer has a strong history (97 successes vs 1 failure) and no fraud flags, so an immediate retry is appropriate to resolve the issue without customer intervention.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.2,905.60.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating transient downtime. The customer has a strong history (97 successes vs. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00017. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00017.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00018",
@@ -409,20 +409,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_expired (customer). ACTION: notify_customer. REASONING: The payment failed because the card has expired. According to the rules, expired cards must never be retried automatically. The customer needs to update their payment method to a valid card.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: card_expired (customer). ACTION: notify_customer. REASONING: The payment failed because the card has expired. According to the rules, expired cards must never be retried automatical. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00018. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00018.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00019",
       "amount_inr": 4082.14,
       "error_code": "bank_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 4082.14,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a transient technical issue on the bank's side. The customer has an excellent history (63 successes, 0 failures), and the payment method is Netbanking. An immediate retry is the most efficient recovery strategy for transient infrastructure errors.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.4,082.14.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a transient technical issue on the bank's side. The customer has an excellent history (63 suc. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00019. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00019.",
+      "timestamp": "2026-09-05T14:53:24.883268+00:00"
     },
     {
       "payment_id": "pay_00020",
@@ -433,8 +433,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The error 'payment_timed_out' indicates the customer did not complete the transaction within the allowed window. This is a user action issue, not a system or instrument failure. Immediate retry is not possible as the session has expired; the customer must initiate a new attempt.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The error 'payment_timed_out' indicates the customer did not complete the transaction within the allowed window. This is. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00020. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00020.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00021",
@@ -445,8 +445,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 9 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The payment failed due to a card decline. The customer has a history of 9 failures, suggesting a persistent issue with the payment instrument or account status rather than a transient error. Retrying is unlikely to succeed without customer intervention to verify funds or card status.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 9 past failures (. OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00022",
@@ -457,8 +457,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic reason. Since the specific cause is unknown and the customer has a good history, the most appropriate step is to notify the customer to verify their card details or contact their bank, rather than automatically retrying which could lead to further declines.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic reason. Since the specific cause is unknown and the customer has a g. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00022. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00022.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00023",
@@ -469,8 +469,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic reason. The customer has a history of 4 failures, indicating a potential issue with the card or account status that requires customer intervention to resolve (e.g., checking funds, card status, or contacting their bank). Retrying is unlikely to succeed without customer action.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic reason. The customer has a history of 4 failures, indicating a poten. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00023. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00023.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00024",
@@ -483,32 +483,32 @@
       "guardrails_triggered": [
         "fraud_block"
       ],
-      "audit_entry": "DIAGNOSIS: payment_risk_check_failed (customer). ACTION: no_action_fraud_flagged. REASONING: The payment failed specifically due to 'payment_risk_check_failed'. According to the rules, this category always requires the 'no_action_fraud_flagged' action and prohibits auto-retry.. RETRIES: 0. OUTCOME: blocked_by_guardrail. BLOCKED BY GUARDRAIL. GUARDRAILS: fraud_block.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_risk_check_failed (customer). ACTION: no_action_fraud_flagged. REASONING: The payment failed specifically due to 'payment_risk_check_failed'. According to the rules, this category always require. OUTCOME: blocked_by_guardrail. DRY_RUN: True. GUARDRAILS: fraud_block.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00025",
       "amount_inr": 1988.88,
       "error_code": "payment_failed",
       "action_taken": "notify_customer",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1988.88,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: notify_customer. REASONING: The error is a generic bank decline with no specific reason provided. Since it is not a confirmed transient infrastructure issue or a specific instrument block, an immediate retry is unlikely to succeed. The customer needs to verify their funds or contact their bank to resolve the generic decline.. RETRIES: 0. OUTCOME: recovered. RECOVERED Rs.1,988.88.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: notify_customer. REASONING: The error is a generic bank decline with no specific reason provided. Since it is not a confirmed transient infrastructu. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00025. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00025.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00026",
       "amount_inr": 1066.68,
       "error_code": "gateway_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1066.68,
-      "retries_used": 2,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
+      "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating partner bank downtime, which is a transient infrastructure issue. The customer has a good history (68 successes vs 2 failures) and no fraud flags, so an immediate retry is appropriate.. RETRIES: 2. OUTCOME: recovered. RECOVERED Rs.1,066.68.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating partner bank downtime, which is a transient infrastructure issue. The . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00026. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00026.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00027",
@@ -519,8 +519,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_not_enrolled (customer). ACTION: notify_customer. REASONING: The error 'card_not_enrolled' indicates the customer's card is not enabled for online transactions. This is a customer-side configuration issue that requires the customer to contact their bank or update their card settings. Retrying is futile until the customer acts.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: card_not_enrolled (customer). ACTION: notify_customer. REASONING: The error 'card_not_enrolled' indicates the customer's card is not enabled for online transactions. This is a customer-s. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00027. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00027.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00028",
@@ -531,8 +531,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The error 'card_declined' indicates the bank rejected the transaction. Since the specific reason is unknown and it is not a confirmed expired or blocked instrument, an automatic retry is unlikely to succeed and could trigger fraud flags. The customer needs to verify their card status or contact their bank to resolve the issue.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The error 'card_declined' indicates the bank rejected the transaction. Since the specific reason is unknown and it is no. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00028. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00028.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00029",
@@ -543,8 +543,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: incorrect_cvv (customer). ACTION: notify_customer. REASONING: The error 'incorrect_cvv' indicates the customer entered the wrong security code. This is a user input error that cannot be resolved by retrying the same data. The customer must verify and re-enter the correct CVV from their card.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: incorrect_cvv (customer). ACTION: notify_customer. REASONING: The error 'incorrect_cvv' indicates the customer entered the wrong security code. This is a user input error that cannot. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00029. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00029.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00030",
@@ -555,8 +555,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 8 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The payment timed out because the customer did not complete the transaction within the allowed time. This is a user-side issue requiring them to retry the payment manually. Retrying immediately or scheduling a retry is not appropriate for a timeout caused by user inaction.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 8 past failures (. OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00031",
@@ -567,20 +567,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's UPI account lacks the required balance. Retrying is futile until funds are added, so the customer must be notified to take action.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's UPI account lacks the required balance. Retrying is futile until. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00031. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00031.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00032",
       "amount_inr": 2791.64,
       "error_code": "gateway_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 2791.64,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway_technical_error indicating partner bank or gateway downtime, which is a transient infrastructure issue. The customer has a low failure count (2) and good history (92 ok), so an immediate retry is appropriate.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.2,791.64.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway_technical_error indicating partner bank or gateway downtime, which is a transient infrastructure . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00032. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00032.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00033",
@@ -591,34 +591,32 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 8 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The error 'authentication_failed' indicates the customer did not complete the 2FA/OTP step. Retrying immediately would likely fail again without customer intervention. Since the failure count (8) is not >5, escalation is not required yet, but the customer must be notified to complete the authentication or update their credentials.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 8 past failures (. OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00034",
       "amount_inr": 2182.5,
       "error_code": "authentication_failed",
       "action_taken": "notify_customer",
-      "execution_outcome": "recovered",
-      "amount_recovered": 2182.5,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' indicates the customer either entered the wrong OTP or abandoned the authentication process. This is a user action issue, not a system failure or fraud flag. Retrying automatically would likely fail again without user intervention. The customer has a good history (82 ok, 2 fail), so escalation is not needed.. RETRIES: 0. OUTCOME: recovered. RECOVERED Rs.2,182.50.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' indicates the customer either entered the wrong OTP or abandoned the authentication pr. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00034. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00034.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00035",
       "amount_inr": 1514.94,
       "error_code": "bank_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "failed",
+      "execution_outcome": "notified_pending",
       "amount_recovered": 0.0,
-      "retries_used": 2,
-      "guardrails_triggered": [
-        "max_retry_limit"
-      ],
-      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a bank technical error, which is a transient infrastructure issue. The customer has a strong history (97 successes) and low failure count, so an immediate retry is appropriate.. RETRIES: 2. OUTCOME: failed. NOT RECOVERED. GUARDRAILS: max_retry_limit.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "retries_used": 1,
+      "guardrails_triggered": [],
+      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a bank technical error, which is a transient infrastructure issue. The customer has a strong . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00035. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00035.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00036",
@@ -629,8 +627,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 12 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The payment failed due to a timeout, which is a customer-side behavior issue (exceeding the time limit). The customer has a history of failures (12) but is below the escalation threshold (>5). Retrying automatically is not appropriate as the user needs to re-initiate the transaction within the time limit. The customer must be notified to retry the payment.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 12 past failures . OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00037",
@@ -641,20 +639,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: debit_instrument_blocked (customer). ACTION: notify_customer. REASONING: The error 'debit_instrument_blocked' indicates the card is blocked by the bank or customer. Per rules, this category never allows retries. The customer must unblock the card or provide a new payment method.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: debit_instrument_blocked (customer). ACTION: notify_customer. REASONING: The error 'debit_instrument_blocked' indicates the card is blocked by the bank or customer. Per rules, this category nev. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00037. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00037.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00038",
       "amount_inr": 1143.68,
       "error_code": "gateway_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1143.68,
-      "retries_used": 2,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
+      "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating partner bank downtime, which is a transient infrastructure issue. The customer has a good history (68 successes) and low failure count, so an immediate retry is appropriate.. RETRIES: 2. OUTCOME: recovered. RECOVERED Rs.1,143.68.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating partner bank downtime, which is a transient infrastructure issue. The . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00038. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00038.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00039",
@@ -665,8 +663,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_not_enrolled (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 15 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The error 'card_not_enrolled' indicates the card is not enabled for online transactions. This is a customer-side configuration issue that requires the customer to contact their bank or enable e-commerce usage. Retrying is futile until the customer acts.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: card_not_enrolled (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 15 past failures . OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00040",
@@ -677,8 +675,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. Retrying immediately or scheduling a retry is unlikely to succeed without the customer adding funds. The customer must take action to resolve the balance issue.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. Retrying immediately or scheduling a retry i. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00040. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00040.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00041",
@@ -689,8 +687,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 9 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The error 'payment_timed_out' indicates the customer did not complete the UPI transaction within the allowed time window. This is a user behavior issue, not a system failure or fraud risk. Retrying automatically is ineffective as it requires user interaction. The customer has a history of failures (9 fails), suggesting they may need guidance or are struggling with the process.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 9 past failures (. OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00042",
@@ -701,8 +699,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 8 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The payment was declined by the bank with a generic 'card_declined' error. The customer has a high failure rate (8 fails vs 2 oks), suggesting a persistent issue with the instrument or account status rather than a transient infrastructure problem. Retrying is unlikely to succeed without customer intervention (e.g., checking funds, card status, or contacting their bank).. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 8 past failures (. OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.883772+00:00"
     },
     {
       "payment_id": "pay_00043",
@@ -713,8 +711,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The error 'payment_timed_out' indicates the customer did not complete the NetBanking transaction within the allowed time window. This is a user action issue, not a system failure. Retrying immediately would likely fail again without customer intervention. The customer has a good history (82 ok, 2 fail), so no escalation is needed.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The error 'payment_timed_out' indicates the customer did not complete the NetBanking transaction within the allowed time. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00043. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00043.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00044",
@@ -725,8 +723,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 8 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The error 'payment_timed_out' indicates the customer did not complete the UPI transaction within the allowed time window. This is a user action issue, not a system failure or fraud risk. Retrying immediately would likely fail again if the user is not ready, and it is not a card instrument issue. The customer needs to be informed to try again at their convenience.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 8 past failures (. OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00045",
@@ -737,8 +735,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic 'card_declined' error. Since the specific reason is unknown and it is not a confirmed transient infrastructure issue, an immediate retry is unlikely to succeed and could trigger fraud flags. The customer must verify their card status or contact their bank to resolve the issue.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic 'card_declined' error. Since the specific reason is unknown and it i. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00045. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00045.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00046",
@@ -749,8 +747,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The error 'payment_cancelled' indicates the customer actively aborted the transaction. Retrying automatically would be intrusive and likely to fail again or cause confusion. The customer needs to be informed that the payment did not go through so they can re-initiate it if they still intend to pay.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The error 'payment_cancelled' indicates the customer actively aborted the transaction. Retrying automatically would be i. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00046. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00046.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00047",
@@ -761,8 +759,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' indicates the customer entered the wrong OTP or abandoned the process. This is a user action issue, not a system or instrument failure. Retrying automatically would likely fail again without user input. The customer must be notified to complete the authentication manually.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' indicates the customer entered the wrong OTP or abandoned the process. This is a user . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00047. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00047.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00048",
@@ -773,8 +771,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' with the meaning 'wrong OTP or abandoned' indicates a user-side issue. The customer has 5 previous failures, which is not >5, so escalation is not yet required. Retrying automatically would likely fail again as the user needs to re-authenticate. The customer must be notified to complete the authentication.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' with the meaning 'wrong OTP or abandoned' indicates a user-side issue. The customer ha. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00048. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00048.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00049",
@@ -785,8 +783,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 15 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The error 'insufficient_funds' indicates the customer's bank account lacks the balance to cover the $3021.88 charge. Retrying immediately or scheduling a retry is unlikely to succeed without customer intervention to add funds. The customer has a history of failures (15 fails), but this specific error requires the customer to resolve the funding issue.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 15 past failures . OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00050",
@@ -797,8 +795,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The payment failed because the customer exceeded the time limit to complete the transaction. This is a customer behavior issue, not a system or card issue. The customer needs to be notified to retry the payment.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The payment failed because the customer exceeded the time limit to complete the transaction. This is a customer behavior. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00050. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00050.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00051",
@@ -809,20 +807,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: transaction_limit_exceeded (customer). ACTION: notify_customer. REASONING: The error 'transaction_limit_exceeded' indicates the customer has hit a daily or per-transaction cap on their UPI method. This is a customer-side constraint that cannot be resolved by retrying immediately or scheduling a retry for the same day. The customer must wait for the limit to reset or use an alternative payment method.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: transaction_limit_exceeded (customer). ACTION: notify_customer. REASONING: The error 'transaction_limit_exceeded' indicates the customer has hit a daily or per-transaction cap on their UPI method. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00051. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00051.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00052",
       "amount_inr": 722.05,
       "error_code": "gateway_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 722.05,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating transient downtime at the partner bank or gateway. The customer has a clean history (0 failures), so an immediate retry is appropriate to resolve the transient issue without delay.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.722.05.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating transient downtime at the partner bank or gateway. The customer has a . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00052. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00052.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00053",
@@ -833,56 +831,56 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. Retrying is futile until the customer adds funds, so they must be notified to take action.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. Retrying is futile until the customer adds f. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00053. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00053.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00054",
       "amount_inr": 1544.67,
       "error_code": "gateway_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1544.67,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway_technical_error indicating a transient infrastructure issue with the partner bank or payment gateway. The customer has a strong history (97 ok, 1 fail) and the issue is not related to the customer's instrument or behavior, making an immediate retry appropriate.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.1,544.67.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway_technical_error indicating a transient infrastructure issue with the partner bank or payment gate. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00054. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00054.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00055",
       "amount_inr": 1645.21,
       "error_code": "insufficient_funds",
       "action_taken": "notify_customer",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1645.21,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. This is a customer-side issue that cannot be resolved by retrying the payment automatically. The customer must top up their account or switch payment methods.. RETRIES: 0. OUTCOME: recovered. RECOVERED Rs.1,645.21.",
-      "timestamp": "2026-09-05T14:30:39.221452+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. This is a customer-side issue that cannot be. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00055. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00055.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00056",
       "amount_inr": 2265.42,
       "error_code": "payment_timed_out",
       "action_taken": "retry_scheduled",
-      "execution_outcome": "recovered",
-      "amount_recovered": 2265.42,
-      "retries_used": 1,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
+      "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: retry_scheduled. REASONING: The payment timed out because the customer did not complete the NetBanking transaction within the allowed time window. This is a common user behavior issue. Since the customer has a good history (87 successes) and low failure count, a scheduled retry is appropriate to allow them to complete the transaction at their convenience without immediate pressure.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.2,265.42.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: retry_scheduled. REASONING: The payment timed out because the customer did not complete the NetBanking transaction within the allowed time window. T. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00056. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00056.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00057",
       "amount_inr": 898.08,
       "error_code": "authentication_failed",
       "action_taken": "notify_customer",
-      "execution_outcome": "recovered",
-      "amount_recovered": 898.08,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' in NetBanking indicates the customer either entered an incorrect OTP or abandoned the process. This is a user-side issue requiring customer intervention to complete the transaction, not a system retry.. RETRIES: 0. OUTCOME: recovered. RECOVERED Rs.898.08.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' in NetBanking indicates the customer either entered an incorrect OTP or abandoned the . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00057. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00057.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00058",
@@ -893,8 +891,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The error 'payment_cancelled' indicates the customer actively aborted the transaction. Retrying is inappropriate as it ignores user intent. The customer needs to be informed that the payment did not go through and can retry if they still wish to pay.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The error 'payment_cancelled' indicates the customer actively aborted the transaction. Retrying is inappropriate as it i. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00058. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00058.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00059",
@@ -905,8 +903,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic reason. The customer has a history of 5 previous failures, which is below the threshold for immediate human escalation (>5). Since the specific decline reason is unknown and likely related to the instrument (funds, limits, or status), the customer must be notified to verify their card details or contact their bank.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic reason. The customer has a history of 5 previous failures, which is . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00059. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00059.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00060",
@@ -917,8 +915,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' indicates the customer either entered the wrong OTP or abandoned the authentication process. This is a user action issue, not a system or card status problem. Retrying automatically would likely fail again without user intervention. The customer has a good history (68 ok, 2 fail) and is not a fraud risk, so notifying them to complete the payment is the correct step.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' indicates the customer either entered the wrong OTP or abandoned the authentication pr. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00060. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00060.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00061",
@@ -929,8 +927,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank for a card-specific reason. Since the customer has a good history (6 successes, 0 failures) and the error is not explicitly fraud or expired, the most likely cause is insufficient funds, a temporary hold, or a bank-side block. Retrying immediately is unlikely to succeed without customer intervention. The customer needs to verify their card status or funds.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank for a card-specific reason. Since the customer has a good history (6 successes, 0 f. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00061. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00061.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00062",
@@ -941,8 +939,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's card account lacks the necessary balance to cover the $2901.16 charge. Retrying is futile until funds are added, so the customer must be notified to update their payment method or add funds.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's card account lacks the necessary balance to cover the $2901.16 c. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00062. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00062.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00063",
@@ -953,8 +951,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's card account lacks sufficient balance. Retrying is futile until funds are added, so the customer must be notified to update their payment method or ensure funds are available.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's card account lacks sufficient balance. Retrying is futile until . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00063. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00063.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00064",
@@ -965,8 +963,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The error 'payment_cancelled' indicates the customer actively backed out of the transaction. Retrying is inappropriate as the intent was withdrawn. The customer needs to be informed that the payment was not completed and can be re-initiated if desired.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The error 'payment_cancelled' indicates the customer actively backed out of the transaction. Retrying is inappropriate a. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00064. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00064.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00065",
@@ -977,8 +975,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: notify_customer. REASONING: The error is a generic bank decline with no specific technical reason provided. Since the customer has a history of 5 failures (not exceeding the threshold of 5 for immediate escalation) and the issue is not a transient infrastructure failure or a blocked instrument, the most appropriate step is to inform the customer so they can verify their UPI app status or bank limits.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: notify_customer. REASONING: The error is a generic bank decline with no specific technical reason provided. Since the customer has a history of 5 fa. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00065. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00065.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00066",
@@ -989,8 +987,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic 'card_declined' error. Since the specific reason is unknown and the customer has a history of 5 failures, it is likely an issue with the card status (insufficient funds, limits, or block) that requires customer intervention. Retrying is not recommended as the cause is not transient.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic 'card_declined' error. Since the specific reason is unknown and the . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00066. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00066.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00067",
@@ -1001,8 +999,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: notify_customer. REASONING: The error is a generic bank decline with no specific technical reason provided. Since it is not a transient infrastructure issue, an immediate retry is unlikely to succeed. The customer has a history of failures (3) but is below the escalation threshold (>5). The most appropriate step is to inform the customer to contact their bank or update their card details, as the issue likely lies with the issuing bank or the instrument itself.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: notify_customer. REASONING: The error is a generic bank decline with no specific technical reason provided. Since it is not a transient infrastructu. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00067. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00067.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00068",
@@ -1013,8 +1011,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The payment failed due to a timeout, indicating the customer did not complete the UPI transaction within the allowed time. This is a user-side issue requiring customer action to retry, not a system error or fraud risk.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The payment failed due to a timeout, indicating the customer did not complete the UPI transaction within the allowed tim. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00068. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00068.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00069",
@@ -1025,8 +1023,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_disabled_for_online_payments (customer). ACTION: notify_customer. REASONING: The error 'card_disabled_for_online_payments' indicates the customer's card is not enrolled for online transactions. This is a customer-side configuration issue that cannot be resolved by retrying. The customer must enable online payments on their card.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_disabled_for_online_payments (customer). ACTION: notify_customer. REASONING: The error 'card_disabled_for_online_payments' indicates the customer's card is not enrolled for online transactions. Thi. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00069. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00069.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00070",
@@ -1037,8 +1035,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic 'card_declined' error. The customer has a strong history (97 successes in 32 months), suggesting the card is valid but the specific transaction was rejected (possibly due to limits, fraud checks by the issuer, or insufficient funds). Retrying immediately is unlikely to succeed without customer input, and it is not a confirmed fraud flag or expired card, so notifying the customer to verify their account status is the best next step.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic 'card_declined' error. The customer has a strong history (97 success. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00070. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00070.",
+      "timestamp": "2026-09-05T14:53:24.884300+00:00"
     },
     {
       "payment_id": "pay_00071",
@@ -1049,8 +1047,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. Retrying immediately or scheduled will not succeed until the customer adds funds. The customer has a history of 3 previous failures, which is below the threshold for human escalation (>5), so automated notification is appropriate.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. Retrying immediately or scheduled will not s. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00071. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00071.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00072",
@@ -1061,8 +1059,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: debit_instrument_inactive (customer). ACTION: notify_customer. REASONING: The error 'debit_instrument_inactive' indicates the card is not activated for online use. Per rules, debit_instrument_blocked/inactive issues must never be retried automatically. The customer must take action to activate the card.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: debit_instrument_inactive (customer). ACTION: notify_customer. REASONING: The error 'debit_instrument_inactive' indicates the card is not activated for online use. Per rules, debit_instrument_bl. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00072. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00072.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00073",
@@ -1073,8 +1071,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' with the meaning 'entered wrong OTP or abandoned' indicates a user-side issue. Retrying automatically would likely fail again or frustrate the user. The customer needs to be informed to complete the transaction manually.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: authentication_failed (customer). ACTION: notify_customer. REASONING: The error 'authentication_failed' with the meaning 'entered wrong OTP or abandoned' indicates a user-side issue. Retryin. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00073. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00073.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00074",
@@ -1085,22 +1083,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_expired (customer). ACTION: notify_customer. REASONING: The payment failed because the card has expired. Per rules, expired cards must never be retried. The customer needs to update their payment method to resolve the issue.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_expired (customer). ACTION: notify_customer. REASONING: The payment failed because the card has expired. Per rules, expired cards must never be retried. The customer needs to u. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00074. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00074.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00075",
       "amount_inr": 546.57,
       "error_code": "gateway_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "failed",
+      "execution_outcome": "notified_pending",
       "amount_recovered": 0.0,
-      "retries_used": 2,
-      "guardrails_triggered": [
-        "max_retry_limit"
-      ],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating transient downtime at the partner bank or gateway. The customer has a strong history (92 successes vs 2 failures) and no fraud flags, making an immediate retry the most appropriate action to resolve the issue without customer intervention.. RETRIES: 2. OUTCOME: failed. NOT RECOVERED. GUARDRAILS: max_retry_limit.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "retries_used": 1,
+      "guardrails_triggered": [],
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is a gateway technical error indicating transient downtime at the partner bank or gateway. The customer has a . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00075. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00075.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00076",
@@ -1111,20 +1107,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: incorrect_cvv (customer). ACTION: notify_customer. REASONING: The error 'incorrect_cvv' indicates a mismatch between the security code entered and the one on file. This is a customer-side input error that cannot be resolved by retrying the same data. The customer must verify and update their card details.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: incorrect_cvv (customer). ACTION: notify_customer. REASONING: The error 'incorrect_cvv' indicates a mismatch between the security code entered and the one on file. This is a customer. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00076. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00076.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00077",
       "amount_inr": 5704.87,
       "error_code": "card_declined",
       "action_taken": "notify_customer",
-      "execution_outcome": "recovered",
-      "amount_recovered": 5704.87,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The error 'card_declined' indicates the bank refused the transaction. Since the specific reason is unknown and it is not a transient infrastructure issue, an immediate retry is likely to fail. The customer must verify their card status or contact their bank to resolve the decline.. RETRIES: 0. OUTCOME: recovered. RECOVERED Rs.5,704.87.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The error 'card_declined' indicates the bank refused the transaction. Since the specific reason is unknown and it is not. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00077. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00077.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00078",
@@ -1135,8 +1131,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 15 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The error 'payment_cancelled' indicates the customer actively aborted the transaction. Retrying is inappropriate as it would override the user's intent. The customer has a history of failures (15 fail vs 5 ok), so a gentle nudge to complete the payment or check their wallet status is appropriate.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 15 past failures . OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00079",
@@ -1147,20 +1143,20 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_not_enrolled (customer). ACTION: notify_customer. REASONING: The error 'card_not_enrolled' indicates the customer's card is not enabled for online transactions. This is a customer-side configuration issue that cannot be resolved by retrying. The customer must contact their bank or update card settings to enable e-commerce usage.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_not_enrolled (customer). ACTION: notify_customer. REASONING: The error 'card_not_enrolled' indicates the customer's card is not enabled for online transactions. This is a customer-s. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00079. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00079.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00080",
       "amount_inr": 1467.04,
       "error_code": "bank_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1467.04,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a transient bank technical issue. The customer has a low failure count (5) and a good history, so an immediate retry is appropriate to resolve the temporary infrastructure glitch.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.1,467.04.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a transient bank technical issue. The customer has a low failure count (5) and a good history. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00080. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00080.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00081",
@@ -1171,8 +1167,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 15 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The payment was actively cancelled by the customer, indicating a deliberate action rather than a technical failure. Retrying is not appropriate as it would override the customer's intent. The customer should be notified that the payment was not completed due to cancellation, allowing them to re-initiate if they still wish to make the purchase.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 15 past failures . OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00082",
@@ -1183,8 +1179,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The error 'card_declined' indicates the issuing bank rejected the transaction. Since the specific reason is unknown and it is not a transient infrastructure issue, an immediate retry is unlikely to succeed and could trigger fraud flags. The customer must verify their card status or contact their bank.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The error 'card_declined' indicates the issuing bank rejected the transaction. Since the specific reason is unknown and . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00082. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00082.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00083",
@@ -1195,8 +1191,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank for an unspecified reason. Since the specific cause is unknown and not explicitly flagged as expired or blocked, the customer must verify their card status or contact their bank to resolve the issue.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank for an unspecified reason. Since the specific cause is unknown and not explicitly f. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00083. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00083.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00084",
@@ -1207,8 +1203,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: incorrect_cvv (customer). ACTION: notify_customer. REASONING: The error 'incorrect_cvv' indicates a mismatch in the security code provided by the customer. This is a user input error that cannot be resolved by retrying the same data. The customer must be notified to verify and update their card details.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: incorrect_cvv (customer). ACTION: notify_customer. REASONING: The error 'incorrect_cvv' indicates a mismatch in the security code provided by the customer. This is a user input error. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00084. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00084.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00085",
@@ -1221,8 +1217,8 @@
       "guardrails_triggered": [
         "fraud_block"
       ],
-      "audit_entry": "DIAGNOSIS: payment_risk_check_failed (customer). ACTION: no_action_fraud_flagged. REASONING: The error code 'payment_risk_check_failed' explicitly indicates a fraud flag. According to the rules, this specific error requires the 'no_action_fraud_flagged' action always, and auto-retries are prohibited.. RETRIES: 0. OUTCOME: blocked_by_guardrail. BLOCKED BY GUARDRAIL. GUARDRAILS: fraud_block.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_risk_check_failed (customer). ACTION: no_action_fraud_flagged. REASONING: The error code 'payment_risk_check_failed' explicitly indicates a fraud flag. According to the rules, this specific erro. OUTCOME: blocked_by_guardrail. DRY_RUN: True. GUARDRAILS: fraud_block.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00086",
@@ -1233,32 +1229,32 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's UPI account lacks the necessary balance. Retrying will not succeed until the customer adds funds, so they must be notified to take action.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's UPI account lacks the necessary balance. Retrying will not succe. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00086. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00086.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00087",
       "amount_inr": 1035.77,
       "error_code": "gateway_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 1035.77,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a gateway technical error indicating transient downtime. The customer has a strong history (28 successes, 1 failure) and no fraud flags, making an immediate retry the most efficient recovery step.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.1,035.77.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: gateway_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is identified as a gateway technical error indicating transient downtime. The customer has a strong history (2. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00087. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00087.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00088",
       "amount_inr": 3847.35,
       "error_code": "bank_technical_error",
       "action_taken": "retry_immediate",
-      "execution_outcome": "recovered",
-      "amount_recovered": 3847.35,
+      "execution_outcome": "notified_pending",
+      "amount_recovered": 0.0,
       "retries_used": 1,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is explicitly identified as a transient bank technical issue. The customer has a strong history (97 successes) and low failure count, making an immediate retry the most efficient recovery method.. RETRIES: 1. OUTCOME: recovered. RECOVERED Rs.3,847.35.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: bank_technical_error (gateway). ACTION: retry_immediate. REASONING: The error is explicitly identified as a transient bank technical issue. The customer has a strong history (97 successes). OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00088. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00088.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00089",
@@ -1269,8 +1265,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 9 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The payment failed due to insufficient funds, which requires the customer to update their payment method or top up their account. Retrying immediately or scheduling a retry without customer intervention is unlikely to succeed and may harm the relationship.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 9 past failures (. OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00090",
@@ -1281,8 +1277,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The payment was actively cancelled by the customer. Retrying is inappropriate as the customer likely changed their mind or encountered an issue they chose to abort. The customer needs to be notified to re-initiate the payment if they still wish to proceed.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_cancelled (customer). ACTION: notify_customer. REASONING: The payment was actively cancelled by the customer. Retrying is inappropriate as the customer likely changed their mind . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00090. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00090.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00091",
@@ -1293,8 +1289,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_not_enrolled (customer). ACTION: notify_customer. REASONING: The error 'card_not_enrolled' indicates the customer's card is not enabled for online or e-commerce transactions. This is a customer-side configuration issue that cannot be resolved by retrying. The customer must contact their bank or update their card settings to enable online payments.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_not_enrolled (customer). ACTION: notify_customer. REASONING: The error 'card_not_enrolled' indicates the customer's card is not enabled for online or e-commerce transactions. This i. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00091. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00091.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00092",
@@ -1305,8 +1301,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's account. Retrying immediately or scheduling a retry is unlikely to succeed without the customer adding funds. The customer has 5 previous failures, which is at the threshold for escalation, but the cause is clear (insufficient funds), so notifying the customer is the most appropriate first step to allow them to resolve the issue.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's account. Retrying immediately or scheduling a retry is un. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00092. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00092.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00093",
@@ -1317,8 +1313,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's UPI account lacks the required balance. Retrying is futile until funds are added, so the customer must be notified to take action.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's UPI account lacks the required balance. Retrying is futile until. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00093. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00093.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00094",
@@ -1329,8 +1325,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic 'card_declined' error. This typically indicates an issue with the customer's card (e.g., insufficient funds, security block, or limit exceeded) rather than a transient infrastructure failure. Retrying immediately is unlikely to succeed and may trigger fraud alerts. The customer needs to verify their card status or provide an alternative payment method.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment was declined by the bank with a generic 'card_declined' error. This typically indicates an issue with the cu. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00094. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00094.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00095",
@@ -1341,8 +1337,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment failed due to a generic card decline from the bank. Since the specific reason is unknown and it is not a transient infrastructure issue, the customer must verify their card status or contact their bank to resolve the issue.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: card_declined (customer). ACTION: notify_customer. REASONING: The payment failed due to a generic card decline from the bank. Since the specific reason is unknown and it is not a tra. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00095. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00095.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00096",
@@ -1353,8 +1349,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The error 'payment_timed_out' indicates the customer did not complete the transaction within the allowed timeframe. This is a user-side issue, not a system failure or fraud. Retrying automatically is unlikely to succeed without user intent, and the customer has a history of failures (4), suggesting they may need guidance or a reminder to complete the payment.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_timed_out (customer). ACTION: notify_customer. REASONING: The error 'payment_timed_out' indicates the customer did not complete the transaction within the allowed timeframe. This. OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00096. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00096.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00097",
@@ -1365,8 +1361,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: debit_instrument_inactive (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 12 past failures (chronic failer). Automated recovery is unlikely to work — escalating to human agent who can investigate the root cause pattern.\n[LLM ORIGINAL] The error 'debit_instrument_inactive' indicates the card is not activated for online use. Per rules, debit_instrument_blocked/inactive issues must never be retried automatically. The customer must take action to activate the card.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: debit_instrument_inactive (customer). ACTION: escalate_human. REASONING: [POLICY OVERRIDE — CHRONIC_FAILER] POLICY OVERRIDE: LLM recommended 'notify_customer' but customer has 12 past failures . OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00098",
@@ -1377,8 +1373,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. Retrying immediately will not succeed until the customer adds funds. The customer has a good history (25 successes), so this is likely a temporary balance issue rather than fraud or a blocked instrument.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The payment failed due to insufficient funds in the customer's UPI account. Retrying immediately will not succeed until . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00098. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00098.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00099",
@@ -1389,8 +1385,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's UPI account lacks the required balance. Retrying immediately or scheduling a retry without customer intervention will likely fail again. The customer must top up their account or switch payment methods.. RETRIES: 0. OUTCOME: notified_pending. CUSTOMER NOTIFIED - PENDING RESPONSE.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: insufficient_funds (customer). ACTION: notify_customer. REASONING: The error 'insufficient_funds' indicates the customer's UPI account lacks the required balance. Retrying immediately or . OUTCOME: notified_pending. DRY_RUN: True. PAYMENT_LINK_ID: plink_DRY_ay_00099. PAYMENT_LINK_URL: https://rzp.io/l/DRY__00099.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     },
     {
       "payment_id": "pay_00100",
@@ -1401,8 +1397,8 @@
       "amount_recovered": 0.0,
       "retries_used": 0,
       "guardrails_triggered": [],
-      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: escalate_human. REASONING: The payment failed with a generic bank decline and no specific reason code. The customer has a strong history (28 successes, 1 failure) and is not flagged for fraud or specific instrument issues like expiration. Since the cause is ambiguous and could be a temporary bank-side issue or a specific account restriction not visible to the gateway, human review is required to determine if a manual retry or customer contact is appropriate.. RETRIES: 0. OUTCOME: escalated. ESCALATED TO HUMAN.",
-      "timestamp": "2026-09-05T14:30:39.222462+00:00"
+      "audit_entry": "DIAGNOSIS: payment_failed (gateway). ACTION: escalate_human. REASONING: The payment failed with a generic bank decline and no specific reason code. The customer has a strong history (28 succes. OUTCOME: escalated. DRY_RUN: True.",
+      "timestamp": "2026-09-05T14:53:24.884819+00:00"
     }
   ]
 }
